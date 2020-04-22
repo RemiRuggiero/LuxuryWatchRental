@@ -5,11 +5,16 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
+ * @UniqueEntity("email", message = "Cette adresse email est déjà utilisée")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -18,17 +23,32 @@ class User
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=90)
+     /**
+     * @Assert\NotBlank( message = "Vous devez saisir votre prénom" )
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Le prénom doit comporter au minimum {{ limit }} caractères",
+     *      maxMessage = "Le prénom doit comporter au maximum {{ limit }} caractères",
+     * )
+     * @ORM\Column(type="string", length=50)
      */
     private $firstname;
 
-    /**
-     * @ORM\Column(type="string", length=90)
+   /**
+     * @Assert\NotBlank( message = "Vous devez saisir votre nom" )
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Le nom doit comporter au minimum {{ limit }} caractères",
+     *      maxMessage = "Le nom doit comporter au maximum {{ limit }} caractères",
+     * )
+     * @ORM\Column(type="string", length=50)
      */
     private $lastname;
 
     /**
+     * @Assert\LessThanOrEqual("-18 years", message = "Vous devez être majeur pour créer un compte")
      * @ORM\Column(type="date")
      */
     private $birthday;
@@ -39,32 +59,36 @@ class User
     private $gender;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="string", length=45, nullable=true)
      */
     private $phone_number;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $address;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $town;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="string", length=45, nullable=true)
      */
     private $zipcode;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="string", length=45, nullable=true)
      */
     private $country;
 
-    /**
-     * @ORM\Column(type="string", length=100)
+     /**
+     * @Assert\NotBlank( message = "Vous devez saisir une adresse e-mail" )
+     * @Assert\Email(
+     *     message = "L'adresse e-mail n'est pas valide"
+     * )
+     * @ORM\Column(type="string", length=100, unique=true)
      */
     private $email;
 
@@ -73,8 +97,19 @@ class User
      */
     private $password;
 
+     /**
+     * @Assert\NotBlank( message = "Vous devez saisir un mot de passe" )
+     * @Assert\Length(
+     *      min = 6,
+     *      max = 16,
+     *      minMessage = "Le mot de passe doit comporter au minimum {{ limit }} caractères",
+     *      maxMessage = "Le mot de passe doit comporter au maximum {{ limit }} caractères",
+     * )
+     */    
+    private $plainPassword;
+
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $identity_card;
 
@@ -229,6 +264,18 @@ class User
 
         return $this;
     }
+    
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
 
     public function getIdentityCard(): ?string
     {
@@ -284,4 +331,17 @@ class User
 
         return $this;
     }
+
+    public function getSalt()
+    {
+        return null;
+    }
+
+    public function eraseCredentials(){}
+
+    public function getUsername()
+    {
+        return $this->getEmail();
+    }
+
 }

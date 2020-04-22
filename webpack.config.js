@@ -24,8 +24,8 @@ Encore
     // enables Sass/SCSS support
     .enableSassLoader()
     .copyFiles({
-        from: './assets/img',
-        to: 'img/[path][name].[ext]',
+        from: './assets/images',
+        to: 'images/[path][name].[ext]',
         pattern: /\.(png|jpg|jpeg)$/
     })
 ;
