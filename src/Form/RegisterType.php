@@ -10,6 +10,9 @@ use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Validator\Constraints\Expression;
@@ -35,6 +38,10 @@ class RegisterType extends AbstractType
                 'placeholder' => array(
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
                 )
+            ))
+            ->add('gender', ChoiceType::class, array(
+                'label' => "Sexe",
+                'choices'  => array('Homme' => true, 'Femme' => false),
             ))
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,

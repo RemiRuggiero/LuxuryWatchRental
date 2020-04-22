@@ -30,6 +30,17 @@ class UserController extends AbstractController
             $user->setPassword( $password );
             $user->setRoles( ['ROLE_USER'] );
 
+            $gender = $user->getGender();
+            if ($gender){
+                $gender = 1;
+                $user->setGender($gender);
+            }
+            else{
+                $gender = 0;
+                $user->setGender($gender);
+            }
+            
+            
             $em->persist( $user );
             $em->flush();
 
