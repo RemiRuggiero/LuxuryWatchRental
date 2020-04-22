@@ -23,6 +23,12 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
+    .copyFiles({
+        from: './assets/img',
+        to: 'img/[path][name].[ext]',
+        pattern: /\.(png|jpg|jpeg)$/
+    })
+;
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
