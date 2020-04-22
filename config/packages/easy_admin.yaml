@@ -1,8 +1,20 @@
 easy_admin:
     site_name: '<img src="/build/images/BrandHorizontalBlack.png" height="35"> ____Manager'
+#    user:
+#        name_property_path: user
     entities:
-#        - App\Entity\Product
-#        - App\Entity\Category
         - App\Entity\User
         - App\Entity\WatchModel
+        - App\Entity\WatchEntity
+        - App\Entity\Location
+        - App\Entity\DeliveryCompany
+
+    
+
+
+#    user: 
+#        class:
+
+#        field username
+#         propeties user
 

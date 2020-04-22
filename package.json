@@ -16,6 +16,8 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.13.0",
+        "bootswatch": "^4.4.1",
         "jquery": "^3.5.0"
     }
 }
