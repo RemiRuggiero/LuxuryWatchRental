@@ -1,5 +1,40 @@
-body {
-    background-color: rgb(255, 0, 0);
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;600&display=swap');
+
+
+// CSS navbar 
+.navbar{
+    background-color: black;
+    padding:1em;
+    font-family: 'Raleway';
+    font-weight: 300;
+    font-size: 14px;
+
+    .nav-item{
+        margin: 5px;
+    }
+
+    img{
+        height: 4vh;
+        width: auto;
+        margin-left: 1em;
+    } 
 }
+
+// CSS footer
+footer{
+    background-color: black;
+    display: flex;
+    ul{
+        margin: auto;
+        
+    }
+    .nav-link{
+        font-family: 'Raleway';
+        font-weight: 300;
+        color:white;
+        
+    }
+}
+
 
 
