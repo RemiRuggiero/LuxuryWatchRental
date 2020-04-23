@@ -9,7 +9,7 @@ Encore
     .setPublicPath('/build')
 
     .addEntry('app', './assets/js/app.js')
-
+    
     .splitEntryChunks()
     .cleanupOutputBeforeBuild()
     .enableSingleRuntimeChunk()
@@ -38,7 +38,7 @@ Encore
     //.enableReactPreset()
     //.addEntry('admin', './assets/js/admin.js')
     .copyFiles({
-        from: './assets/img',
+        from: './assets/images',
         to: 'images/[path][name].[ext]',
         pattern: /\.(png|jpg|jpeg)$/
     }) 
