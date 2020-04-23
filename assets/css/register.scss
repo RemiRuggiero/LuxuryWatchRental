@@ -1,16 +1,16 @@
 .register{
     display: flex;
     font-family: 'Raleway';
-
+    .row{
+    justify-content: center;
+    }
 }
 
 .col-lg-6{
     padding: 1em;
 }
 
-.row{
-    justify-content: center;
-}
+
 
 .btn{
     border-radius: 2em;

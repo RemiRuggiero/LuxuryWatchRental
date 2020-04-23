@@ -45,11 +45,7 @@
 
                     {% if app.user is empty %}
                     <li class="nav-item">
-<<<<<<< HEAD
                         <a class="nav-link" href="{{ path('user_login') }}">Connexion/Inscription</a>
-=======
-                        <a class="nav-link" href="{{ path('user_register') }}">Connexion/Inscription</a>
->>>>>>> registerForm
                     </li>
                     {% else %}
                         <a href="{{ path('user_logout') }}" class="btn btn-dark">Déconnexion</a>
