@@ -7,27 +7,61 @@ easy_admin:
     entities:
         Utilisateurs:
             class: App\Entity\User
-#            form:
-#                fields:
-#                    - firstname
-#                    - lastname
-#                    - email
-#                    - address
-#                    - town
-#                    - zipcode
-#                    - country
-#                    - phone_number
-#                    - { property: 'birthday', type: 'birthday', label: 'Date de naissance' }
-#                    - roles
-#                    - plainPassword
+            form:
+                fields: 
+                    - { property: firstname, label: 'Prénom' }
+                    - { property: lastname, label: 'Nom' }                    
+                    - email
+                    - { property: address, label: 'Adresse' }
+                    - { property: town, label: 'Ville' }
+                    - { property: zipcode, label: 'Code Postal' }
+                    - { property: country, label: 'Pays' }
+                    - { property: phone_number, label: 'Téléphone' }
+                    - { property: 'birthday', type: 'birthday', label: 'Date de naissance' }
+                    - roles
+                    - plainPassword                    
         Montres:
             class: App\Entity\WatchModel
-        Références:
+            form:
+                fields:
+                    - { property: brand, label: 'Marque' }
+                    - { property: model, label: 'Modèle' }
+                    - { property: gender, label: 'Genre', help: '0 = femme, 1 = homme, 2 = unisex' }
+                    - { property: description, label: 'Description' }
+                    - { property: color, label: 'Couleur' }
+                    - { property: price, label: 'Prix' }
+                    - { property: glass, label: 'Verre' }                    
+                    - { property: movement, label: 'Mouvement' }
+                    - { property: diameter, label: 'Diamètre' }
+                    - { property: waterproof, label: 'Étanchéité' }
+#                    - { property: glass, label: 'vitre' }
+                    - { property: function, label: 'Fonction' }
+                    - { property: watch_clasps, label: 'Fermoir' }
+                    - Bracelet
+                    - { property: watch_dial, label: 'Cadran' }
+                    - { property: deposit, label: 'Dépôt' }
+                    - { property: picture, label: 'id photo' }
+        Images:
+            class: App\Entity\Picture
+            form:
+                fields:
+                    - { property: picture_1, type: 'file', base_path: './assets/images', label: 'Photo 1' }
+                    - { property: picture_2, type: 'file', base_path: './assets/images', label: 'Photo 2' }
+                    - { property: picture_3, type: 'file', base_path: './assets/images', label: 'Photo 3' }
+                    - { property: picture_4, type: 'file', base_path: './assets/images', label: 'Photo 4' }
+                    - { property: picture_5, type: 'file', base_path: './assets/images', label: 'Photo 5' }
+                    - { property: picture_6, type: 'file', base_path: './assets/images', label: 'Photo 6' }
+                    
+        References:
             class: App\Entity\WatchEntity
         Locations:
             class: App\Entity\Location
         Transporteurs:
             class: App\Entity\DeliveryCompany
-         
+            form:
+                fields:
+                    - { property: name, label: 'Nom' }
+                    - logo
+                    - { property: tracking_link, label: 'Suivi de commande' }
                 
 

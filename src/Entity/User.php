@@ -344,4 +344,10 @@ class User implements UserInterface
         return $this->getEmail();
     }
 
+    
+    public function __toString()
+    {
+        return $this->firstname;
+    }
+
 }
