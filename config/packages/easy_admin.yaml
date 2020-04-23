@@ -40,17 +40,7 @@ easy_admin:
                     - Bracelet
                     - { property: watch_dial, label: 'Cadran' }
                     - { property: deposit, label: 'Dépôt' }
-                    - { property: picture, label: 'id photo' }
-        Images:
-            class: App\Entity\Picture
-            form:
-                fields:
-                    - { property: picture_1, type: 'file', base_path: './assets/images', label: 'Photo 1' }
-                    - { property: picture_2, type: 'file', base_path: './assets/images', label: 'Photo 2' }
-                    - { property: picture_3, type: 'file', base_path: './assets/images', label: 'Photo 3' }
-                    - { property: picture_4, type: 'file', base_path: './assets/images', label: 'Photo 4' }
-                    - { property: picture_5, type: 'file', base_path: './assets/images', label: 'Photo 5' }
-                    - { property: picture_6, type: 'file', base_path: './assets/images', label: 'Photo 6' }
+                    - { property: picture, type: 'collection', type_options: { entry_type: file_upload, allow_delete: true, entry_options: { upload_dir: 'assets/images' } } }
                     
         References:
             class: App\Entity\WatchEntity
