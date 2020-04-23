@@ -123,6 +123,11 @@ class User implements UserInterface
      */
     private $locations;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $activation_token;
+
     public function __construct()
     {
         $this->locations = new ArrayCollection();
@@ -342,6 +347,18 @@ class User implements UserInterface
     public function getUsername()
     {
         return $this->getEmail();
+    }
+
+    public function getActivationToken(): ?string
+    {
+        return $this->activation_token;
+    }
+
+    public function setActivationToken(?string $activation_token): self
+    {
+        $this->activation_token = $activation_token;
+
+        return $this;
     }
 
 }
