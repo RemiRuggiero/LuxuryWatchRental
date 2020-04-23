@@ -51,4 +51,35 @@ class UserController extends AbstractController
             'form' => $form->createView(),
         ));
     }
+
+    /**
+     * @Route("/login", name="user_login")
+     */
+    public function login( AuthenticationUtils $authUtils ){
+        return $this->render( 'user/login.html.twig', array(
+            'lastUsername' => $authUtils->getLastUsername(),
+            'error' => $authUtils->getLastAuthenticationError(),
+        ));
+    }
+
+    /**
+     * @Route("/logout", name="user_logout")
+     */
+    public function logout(){}
+
+    /**
+     * @Route("/login_success", name="user_login_success")
+     */
+    public function login_success(){
+        $this->addFlash( 'dark', 'Vous êtes bien connecté' );
+        return $this->redirectToRoute( 'homepage' );
+    }
+
+    /**
+     * @Route("/logout_success", name="user_logout_success")
+     */
+    public function logout_success(){
+        $this->addFlash( 'dark', 'Vous êtes bien déconnecté' );
+        return $this->redirectToRoute( 'homepage' );
+    }
 }
