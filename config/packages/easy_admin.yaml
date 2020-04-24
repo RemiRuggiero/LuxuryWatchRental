@@ -1,0 +1,74 @@
+easy_admin:
+    design:
+        brand_color: 'black'
+    site_name: '<img src="/build/images/BrandHorizontalBlack.png" height="35"> ____Manager'
+    user:
+        name_property_path: email # affichage en haut à droite de l'admin une fois la partie register faite
+    entities:
+        Utilisateurs:
+            class: App\Entity\User
+            form:
+                fields: 
+                    - { property: firstname, label: 'Prénom' }
+                    - { property: lastname, label: 'Nom' }                    
+                    - email
+                    - { property: gender, label: 'Genre', help: '0 = femme, 1 = homme' }
+                    - { property: address, label: 'Adresse' }
+                    - { property: town, label: 'Ville' }
+                    - { property: zipcode, label: 'Code Postal' }
+                    - { property: country, label: 'Pays' }
+                    - { property: phone_number, label: 'Téléphone' }
+                    - { property: 'birthday', type: 'birthday', label: 'Date de Naissance' }
+                    - roles
+                    - password
+                    - plainPassword                    
+        Montres:
+            class: App\Entity\WatchModel
+            form:
+                fields:
+                    - { property: brand, label: 'Marque' }
+                    - { property: model, label: 'Modèle' }
+                    - { property: gender, label: 'Genre', help: '0 = femme, 1 = homme, 2 = unisex' }
+                    - { property: description, label: 'Description' }
+                    - { property: color, label: 'Couleur' }
+                    - { property: price, label: 'Prix' }
+                    - { property: glass, label: 'Verre' }                    
+                    - { property: movement, label: 'Mouvement' }
+                    - { property: diameter, label: 'Diamètre' }
+                    - { property: waterproof, label: 'Étanchéité' }
+#                    - { property: glass, label: 'vitre' }
+                    - { property: function, label: 'Fonction' }
+                    - { property: watch_clasps, label: 'Fermoir' }
+                    - Bracelet
+                    - { property: watch_dial, label: 'Cadran' }
+                    - { property: deposit, label: 'Dépôt' }
+                    # - { property: picture, type: 'collection', type_options: { entry_type: file_upload, allow_delete: true, entry_options: { upload_dir: 'assets/images' } } }
+                    
+        References:
+            class: App\Entity\WatchEntity
+            form:
+                fields:
+                    - { property: serial_number, label: 'Numéro de Série' }
+                    - { property: watch_model, label: 'Modèle de Montre' }
+        Locations:
+            class: App\Entity\Location
+            form:
+                fields:
+                    - { property: location_number, label: 'Numéro de Location' }
+                    - { property: starts_at, label: 'Date de Location' }
+                    - { property: ends_at, label: 'Date de fin de Location' }
+                    - { property: amount, label: 'Montant' }
+                    - { property: is_paid, label: 'Paiement effectué?' }
+                    - { property: bill_number, label: 'Numéro de Facture' }
+                    - { property: watch_entity, label: 'Infos / Référence' }
+                    - { property: user, label: 'Loueur' }
+                    - { property: delivery, label: 'Numéro de Livraison' }
+        Transporteurs:
+            class: App\Entity\DeliveryCompany
+            form:
+                fields:
+                    - { property: name, label: 'Nom' }
+                    - { property: logo, type: 'collection', type_options: { entry_type: file_upload, allow_delete: true, entry_options: { upload_dir: 'assets/images' } } }
+                    - { property: tracking_link, label: 'Suivi de commande' }
+                
+
