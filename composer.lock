@@ -5,7 +5,6 @@
         "This file is @generated automatically"
     ],
     "content-hash": "2e397dacf7488025c457115322215d46",
-
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1249,12 +1248,6 @@
                 "admin",
                 "backend",
                 "generator"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/javiereguiluz",
-                    "type": "github"
-                }
             ],
             "time": "2020-04-19T14:14:32+00:00"
         },
