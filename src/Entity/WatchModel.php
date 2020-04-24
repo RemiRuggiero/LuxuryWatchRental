@@ -96,12 +96,12 @@ class WatchModel
    
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\WatchEntity", mappedBy="watch_model")
+     * @ORM\OneToMany(targetEntity="App\Entity\WatchEntity", mappedBy="watch_model", cascade={"persist", "remove"})
      */
     private $watchEntities;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="watch_model")
+     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="watch_model", cascade={"persist", "remove"})
      */
     private $pictures;
 

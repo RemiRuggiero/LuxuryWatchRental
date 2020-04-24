@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e397dacf7488025c457115322215d46",
+    "content-hash": "a3700edd3a5d5dfc85b6c8bc3fcd98db",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1249,15 +1249,6 @@
                 "backend",
                 "generator"
             ],
-<<<<<<< HEAD
-=======
-            "funding": [
-                {
-                    "url": "https://github.com/javiereguiluz",
-                    "type": "github"
-                }
-            ],
->>>>>>> c0f3874901be48d8261f3559ffd78d2710abcde1
             "time": "2020-04-19T14:14:32+00:00"
         },
         {

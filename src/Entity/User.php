@@ -93,7 +93,6 @@ class User implements UserInterface
     private $email;
 
     /**
-     * 
      * @ORM\Column(type="string", length=255)
      */
     private $password;
@@ -361,5 +360,11 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->firstname;
+    }
+
 
 }
