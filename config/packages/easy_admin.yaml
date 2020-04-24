@@ -12,13 +12,15 @@ easy_admin:
                     - { property: firstname, label: 'Prénom' }
                     - { property: lastname, label: 'Nom' }                    
                     - email
+                    - { property: gender, label: 'Genre', help: '0 = femme, 1 = homme' }
                     - { property: address, label: 'Adresse' }
                     - { property: town, label: 'Ville' }
                     - { property: zipcode, label: 'Code Postal' }
                     - { property: country, label: 'Pays' }
                     - { property: phone_number, label: 'Téléphone' }
-                    - { property: 'birthday', type: 'birthday', label: 'Date de naissance' }
+                    - { property: 'birthday', type: 'birthday', label: 'Date de Naissance' }
                     - roles
+                    - password
                     - plainPassword                    
         Montres:
             class: App\Entity\WatchModel
@@ -40,18 +42,33 @@ easy_admin:
                     - Bracelet
                     - { property: watch_dial, label: 'Cadran' }
                     - { property: deposit, label: 'Dépôt' }
-                    - { property: picture, type: 'collection', type_options: { entry_type: file_upload, allow_delete: true, entry_options: { upload_dir: 'assets/images' } } }
+                    # - { property: picture, type: 'collection', type_options: { entry_type: file_upload, allow_delete: true, entry_options: { upload_dir: 'assets/images' } } }
                     
         References:
             class: App\Entity\WatchEntity
+            form:
+                fields:
+                    - { property: serial_number, label: 'Numéro de Série' }
+                    - { property: watch_model, label: 'Modèle de Montre' }
         Locations:
             class: App\Entity\Location
+            form:
+                fields:
+                    - { property: location_number, label: 'Numéro de Location' }
+                    - { property: starts_at, label: 'Date de Location' }
+                    - { property: ends_at, label: 'Date de fin de Location' }
+                    - { property: amount, label: 'Montant' }
+                    - { property: is_paid, label: 'Paiement effectué?' }
+                    - { property: bill_number, label: 'Numéro de Facture' }
+                    - { property: watch_entity, label: 'Infos / Référence' }
+                    - { property: user, label: 'Loueur' }
+                    - { property: delivery, label: 'Numéro de Livraison' }
         Transporteurs:
             class: App\Entity\DeliveryCompany
             form:
                 fields:
                     - { property: name, label: 'Nom' }
-                    - logo
+                    - { property: logo, type: 'collection', type_options: { entry_type: file_upload, allow_delete: true, entry_options: { upload_dir: 'assets/images' } } }
                     - { property: tracking_link, label: 'Suivi de commande' }
                 
 
