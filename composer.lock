@@ -1249,6 +1249,15 @@
                 "backend",
                 "generator"
             ],
+<<<<<<< HEAD
+=======
+            "funding": [
+                {
+                    "url": "https://github.com/javiereguiluz",
+                    "type": "github"
+                }
+            ],
+>>>>>>> c0f3874901be48d8261f3559ffd78d2710abcde1
             "time": "2020-04-19T14:14:32+00:00"
         },
         {

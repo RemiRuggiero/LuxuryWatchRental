@@ -55,5 +55,12 @@ class Picture
         return $this;
     }
 
+<<<<<<< HEAD
    
+=======
+    public function __toString()
+    {
+        return $this->picture_1;
+    }
+>>>>>>> c0f3874901be48d8261f3559ffd78d2710abcde1
 }
