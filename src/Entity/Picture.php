@@ -54,4 +54,9 @@ class Picture
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->picture_1;
+    }
 }
