@@ -93,6 +93,7 @@ class User implements UserInterface
     private $email;
 
     /**
+     * 
      * @ORM\Column(type="string", length=255)
      */
     private $password;
@@ -122,6 +123,11 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\Location", mappedBy="user")
      */
     private $locations;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $activation_token;
 
     public function __construct()
     {
@@ -344,10 +350,16 @@ class User implements UserInterface
         return $this->getEmail();
     }
 
-    
-    public function __toString()
+    public function getActivationToken(): ?string
     {
-        return $this->firstname;
+        return $this->activation_token;
+    }
+
+    public function setActivationToken(?string $activation_token): self
+    {
+        $this->activation_token = $activation_token;
+
+        return $this;
     }
 
 }
