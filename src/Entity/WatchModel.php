@@ -93,20 +93,25 @@ class WatchModel
      */
     private $deposit;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $picture;
+   
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\WatchEntity", mappedBy="watch_model")
      */
     private $watchEntities;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="watch_model")
+     */
+    private $pictures;
+
+    
+
     public function __construct()
     {
         $this->watchEntities = new ArrayCollection();
+        $this->picture = new ArrayCollection();
+        $this->pictures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -294,17 +299,7 @@ class WatchModel
         return $this;
     }
 
-    public function getPicture(): ?Picture
-    {
-        return $this->picture;
-    }
-
-    public function setPicture(Picture $picture): self
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
+    
 
     /**
      * @return Collection|WatchEntity[]
@@ -336,4 +331,37 @@ class WatchModel
 
         return $this;
     }
+
+    /**
+     * @return Collection|Picture[]
+     */
+    public function getPictures(): Collection
+    {
+        return $this->pictures;
+    }
+
+    public function addPicture(Picture $picture): self
+    {
+        if (!$this->pictures->contains($picture)) {
+            $this->pictures[] = $picture;
+            $picture->setWatchModel($this);
+        }
+
+        return $this;
+    }
+
+    public function removePicture(Picture $picture): self
+    {
+        if ($this->pictures->contains($picture)) {
+            $this->pictures->removeElement($picture);
+            // set the owning side to null (unless already changed)
+            if ($picture->getWatchModel() === $this) {
+                $picture->setWatchModel(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 }

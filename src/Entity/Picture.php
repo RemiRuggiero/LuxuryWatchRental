@@ -17,108 +17,40 @@ class Picture
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $picture_1;
+    private $picture;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\WatchModel", inversedBy="pictures")
      */
-    private $picture_2;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $picture_3;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $picture_4;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $picture_5;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $picture_6;
+    private $watch_model;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPicture1(): ?string
+    public function getPicture(): ?string
     {
-        return $this->picture_1;
+        return $this->picture;
     }
 
-    public function setPicture1(string $picture_1): self
+    public function setPicture(?string $picture): self
     {
-        $this->picture_1 = $picture_1;
+        $this->picture = $picture;
 
         return $this;
     }
 
-    public function getPicture2(): ?string
+    public function getWatchModel(): ?WatchModel
     {
-        return $this->picture_2;
+        return $this->watch_model;
     }
 
-    public function setPicture2(string $picture_2): self
+    public function setWatchModel(?WatchModel $watch_model): self
     {
-        $this->picture_2 = $picture_2;
-
-        return $this;
-    }
-
-    public function getPicture3(): ?string
-    {
-        return $this->picture_3;
-    }
-
-    public function setPicture3(string $picture_3): self
-    {
-        $this->picture_3 = $picture_3;
-
-        return $this;
-    }
-
-    public function getPicture4(): ?string
-    {
-        return $this->picture_4;
-    }
-
-    public function setPicture4(string $picture_4): self
-    {
-        $this->picture_4 = $picture_4;
-
-        return $this;
-    }
-
-    public function getPicture5(): ?string
-    {
-        return $this->picture_5;
-    }
-
-    public function setPicture5(string $picture_5): self
-    {
-        $this->picture_5 = $picture_5;
-
-        return $this;
-    }
-
-    public function getPicture6(): ?string
-    {
-        return $this->picture_6;
-    }
-
-    public function setPicture6(string $picture_6): self
-    {
-        $this->picture_6 = $picture_6;
+        $this->watch_model = $watch_model;
 
         return $this;
     }
