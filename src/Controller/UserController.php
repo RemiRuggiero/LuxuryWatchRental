@@ -25,7 +25,15 @@ class UserController extends AbstractController
     public function register( Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em, GuardAuthenticatorHandler $guardHandler, Swift_Mailer $mailer) : Response
     {
         $user = new User();
+<<<<<<< HEAD
         $form = $this->createForm( RegisterType::class, $user);
+=======
+        $form = $this->createForm( RegisterType::class, $user, array(
+           
+                'validation_groups' => ['Default', 'registration'],            
+        ));
+        
+>>>>>>> 005afc61a24267771ecc0c94ced4856d74e596fd
         $form->handleRequest( $request );
 
         if( $form->isSubmitted() && $form->isValid() ){
