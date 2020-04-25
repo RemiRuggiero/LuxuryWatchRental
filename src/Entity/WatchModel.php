@@ -96,7 +96,7 @@ class WatchModel
    
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\WatchEntity", mappedBy="watch_model", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\WatchEntity", mappedBy="watch_model", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $watchEntities;
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DeliveryCompanyRepository")
@@ -22,6 +23,7 @@ class DeliveryCompany
     private $name;
 
     /**
+     * @Assert\NotBlank( message = "Vous devez ajouter un logo")
      * @ORM\Column(type="string", length=255)
      */
     private $logo;
@@ -74,6 +76,8 @@ class DeliveryCompany
 
     public function __toString()
     {
-        return $this->logo;
+        return $this->name;
     }
+
+
 }

@@ -98,12 +98,13 @@ class User implements UserInterface
     private $password;
 
      /**
-     * @Assert\NotBlank( message = "Vous devez saisir un mot de passe" )
+     * @Assert\NotBlank( message = "Vous devez saisir un mot de passe", groups={"registration"} )
      * @Assert\Length(
      *      min = 6,
      *      max = 16,
      *      minMessage = "Le mot de passe doit comporter au minimum {{ limit }} caractères",
      *      maxMessage = "Le mot de passe doit comporter au maximum {{ limit }} caractères",
+     *      groups={"registration"}
      * )
      */    
     private $plainPassword;
@@ -363,7 +364,7 @@ class User implements UserInterface
 
     public function __toString()
     {
-        return $this->firstname;
+        return $this->firstname.' '.$this->lastname;
     }
 
 

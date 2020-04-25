@@ -186,4 +186,11 @@ class Delivery
     }
 
     
+    public function __toString()
+    {
+        return $this->tracking_number;
+    }
+
+
+    
 }
