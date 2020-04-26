@@ -143,7 +143,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/oubli-pass", name="app_forgotten_password")
+     * @Route("/forgot_pass", name="app_forgotten_password")
      */
     public function oubliPass(Request $request, UserRepository $users, \Swift_Mailer $mailer, TokenGeneratorInterface $tokenGenerator
     ): Response
@@ -164,11 +164,11 @@ class UserController extends AbstractController
         
             // Si l'utilisateur n'existe pas
             if ($user === null) {
-                // On envoie une alerte disant que l'adresse e-mail est inconnue
+                // Alerte : l'adresse e-mail est inconnue
                 $this->addFlash('danger', 'Cette adresse e-mail n\'est pas connue');
                 
                 // On retourne sur la page de connexion
-                return $this->redirectToRoute('user_login');
+                return $this->redirectToRoute('app_forgotten_password');
             }
         
             // On génère un token
@@ -188,21 +188,20 @@ class UserController extends AbstractController
             // On génère l'URL de réinitialisation de mot de passe
             $url = $this->generateUrl('app_reset_password', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
         
-            // On génère l'e-mail
+            // On  envoie l'e-mail
             $message = (new \Swift_Message('Mot de passe oublié'))
                 ->setFrom('pierredechezlwr@gmail.com')
                 ->setTo($user->getEmail())
                 ->setBody(
-                    "Bonjour,<br><br>Une demande de réinitialisation du mot de passe a été effectuée pour le site LuxuryWatchRental.fr. Veuillez cliquer sur le lien suivant : " . $url,
+                    "Bonjour,<br><br>Une demande de réinitialisation du mot de passe a été effectuée pour le site LuxuryWatchRental.fr. Veuillez cliquer sur le lien suivant : <a href= ". $url .">Réinitialiser mon mot de passe</a>",
                     'text/html'
                 )
             ;
                 
-            // On envoie l'e-mail
             $mailer->send($message);
                 
             // On crée le message flash de confirmation
-            $this->addFlash('message', 'E-mail de réinitialisation du mot de passe envoyé !');
+            $this->addFlash('success', 'E-mail de réinitialisation du mot de passe envoyé !');
                 
             // On redirige vers la page de login
             return $this->redirectToRoute('user_login');
@@ -248,7 +247,7 @@ class UserController extends AbstractController
            $entityManager->flush();
 
            // On crée le message flash
-           $this->addFlash('message', 'Mot de passe mis à jour');
+           $this->addFlash('success', 'Mot de passe mis à jour');
 
            // On redirige vers la page de connexion
            return $this->redirectToRoute('user_login');
