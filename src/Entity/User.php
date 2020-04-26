@@ -129,6 +129,11 @@ class User implements UserInterface
      */
     private $activation_token;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $reset_token;
+
     public function __construct()
     {
         $this->locations = new ArrayCollection();
@@ -362,10 +367,24 @@ class User implements UserInterface
         return $this;
     }
 
+<<<<<<< HEAD
     public function __toString()
     {
         return $this->firstname.' '.$this->lastname;
     }
 
+=======
+    public function getResetToken(): ?string
+    {
+        return $this->reset_token;
+    }
+
+    public function setResetToken(?string $reset_token): self
+    {
+        $this->reset_token = $reset_token;
+
+        return $this;
+    }
+>>>>>>> resetPassword
 
 }
