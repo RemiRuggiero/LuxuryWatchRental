@@ -367,13 +367,11 @@ class User implements UserInterface
         return $this;
     }
 
-<<<<<<< HEAD
     public function __toString()
     {
         return $this->firstname.' '.$this->lastname;
-    }
+    } 
 
-=======
     public function getResetToken(): ?string
     {
         return $this->reset_token;
@@ -385,6 +383,5 @@ class User implements UserInterface
 
         return $this;
     }
->>>>>>> resetPassword
 
 }

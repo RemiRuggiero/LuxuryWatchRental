@@ -60,6 +60,9 @@ class AdminSubscriber implements EventSubscriberInterface
         $allPicture = $entity->getPictures();  
         foreach($allPicture as $picture)
         {
+            $pictureName = explode('/', $picture->getPicture());
+            $pictureName = end($pictureName);
+            $picture->setPicture($pictureName);
             $picture->setWatchModel($entity);
         }
         $allEntities = $entity->getWatchEntities();  
