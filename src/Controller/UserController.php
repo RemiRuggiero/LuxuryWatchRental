@@ -25,15 +25,11 @@ class UserController extends AbstractController
     public function register( Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em, GuardAuthenticatorHandler $guardHandler, Swift_Mailer $mailer) : Response
     {
         $user = new User();
-<<<<<<< HEAD
-        $form = $this->createForm( RegisterType::class, $user);
-=======
         $form = $this->createForm( RegisterType::class, $user, array(
            
                 'validation_groups' => ['Default', 'registration'],            
         ));
         
->>>>>>> 005afc61a24267771ecc0c94ced4856d74e596fd
         $form->handleRequest( $request );
 
         if( $form->isSubmitted() && $form->isValid() ){
@@ -136,7 +132,7 @@ class UserController extends AbstractController
      */
     public function login_success(){
         $this->addFlash( 'dark', 'Vous êtes bien connecté' );
-        return $this->redirectToRoute( 'homepage' );
+        return $this->redirectToRoute( 'account' );
     }
 
     /**
@@ -145,5 +141,16 @@ class UserController extends AbstractController
     public function logout_success(){
         $this->addFlash( 'dark', 'Vous êtes bien déconnecté' );
         return $this->redirectToRoute( 'homepage' );
+    }
+
+     /**
+     * @Route("/account", name="account")
+     */
+    public function account()
+    {
+        $currentUser = $this->getUser();
+        return $this->render('user/account.html.twig' , array(
+            'user' => $currentUser
+        ));
     }
 }

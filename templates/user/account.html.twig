@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte -{{ parent() }}{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Bienvenue {{ user.firstname }} </h1>
+
+    <h2> Mes locations {{ user.locations }} </h2>
+        
+</div>
+    
+    
+
+
+    {% endblock %}   
