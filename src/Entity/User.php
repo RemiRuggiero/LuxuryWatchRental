@@ -375,7 +375,7 @@ class User implements UserInterface
     public function __toString()
     {
         return $this->firstname.' '.$this->lastname;
-    }
+    } 
 
     public function getResetToken(): ?string
     {
@@ -388,6 +388,7 @@ class User implements UserInterface
 
         return $this;
     }
+<<<<<<< HEAD
 
     public function getEnable(): ?bool
     {
@@ -400,5 +401,7 @@ class User implements UserInterface
 
         return $this;
     }
+=======
+>>>>>>> MaleCatalogue
 
 }

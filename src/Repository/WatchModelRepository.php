@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\WatchModel;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Mapping\Entity;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,6 +18,32 @@ class WatchModelRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, WatchModel::class);
+    }
+
+    /* public function findByGenderMale( $genderMale ): ?WatchModel
+    {
+        $stmt = $this->createQueryBuilder( 'e' );
+        $stmt->where( 'e.gender = :1' );
+        $stmt->setParameter( 0, $genderMale );
+
+        return $stmt->getQuery()->getResult();
+    } */
+
+    /**
+      * @return WatchModel[] Returns an array of WatchModel objects
+     */
+    
+    public function findByGender($gendermale)
+    {
+        return $this->createQueryBuilder('w')
+            ->select('w')
+            /* ->from("App\Entity\WatchModel", 'w') */
+            ->where('w.gender = :gender')
+            ->setParameter('gender', $gendermale)
+            ->getQuery()
+            ->getResult()
+        
+        ;
     }
 
     // /**
