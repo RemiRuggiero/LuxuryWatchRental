@@ -6,8 +6,22 @@
 
 <div class="container">
     <h1>Bienvenue {{ user.firstname }} </h1>
-
-    <h2> Mes locations {{ user.locations }} </h2>
+    <h2>Mes coordonnées</h2>
+    <hr>
+    <h2> Mes locations </h2>
+        {% for location in locations %}
+        <ul>
+            <li>
+                <h5>Numéro de location : {{ location.locationNumber }}</h5>
+            </li>
+            <li>
+                <p> Date de debut de location : {{ date( location.startsAt )|date('d/m/Y H:i') }}</p>
+            </li>
+            <li>
+                <p> Date de debut de fin : {{ date( location.endsAt )|date('d/m/Y H:i') }}</p>
+            </li>
+        </ul>
+        {% endfor %}
         
 </div>
     
