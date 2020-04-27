@@ -104,6 +104,7 @@ class UserController extends AbstractController
 
        // Delete token
        $user->setActivationToken(null);
+       $user->setEnable(true);
        $entityManager = $this->getDoctrine()->getManager();
        $entityManager->persist($user);
        $entityManager->flush();
@@ -116,35 +117,35 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/login", name="user_login")
+     * @Route("/login", name="app_login")
      */
-    public function login( AuthenticationUtils $authUtils ){
-        return $this->render( 'user/login.html.twig', array(
-            'lastUsername' => $authUtils->getLastUsername(),
-            'error' => $authUtils->getLastAuthenticationError(),
-        ));
-    }
+    // public function login( AuthenticationUtils $authUtils ){
+    //     return $this->render( 'user/login.html.twig', array(
+    //         'lastUsername' => $authUtils->getLastUsername(),
+    //         'error' => $authUtils->getLastAuthenticationError(),
+    //     ));
+    // }
 
-    /**
-     * @Route("/logout", name="user_logout")
-     */
-    public function logout(){}
+    // /**
+    //  * @Route("/logout", name="app_logout")
+    //  */
+    // public function logout(){}
 
-    /**
-     * @Route("/login_success", name="user_login_success")
-     */
-    public function login_success(){
-        $this->addFlash( 'dark', 'Vous êtes bien connecté' );
-        return $this->redirectToRoute( 'homepage' );
-    }
+    // /**
+    //  * @Route("/login_success", name="usr_login_success")
+    //  */
+    // public function login_success(){
+    //     $this->addFlash( 'dark', 'Vous êtes bien connecté' );
+    //     return $this->redirectToRoute( 'homepage' );
+    // }
 
-    /**
-     * @Route("/logout_success", name="user_logout_success")
-     */
-    public function logout_success(){
-        $this->addFlash( 'dark', 'Vous êtes bien déconnecté' );
-        return $this->redirectToRoute( 'homepage' );
-    }
+    // /**
+    //  * @Route("/logout_success", name="usr_logout_success")
+    //  */
+    // public function logout_success(){
+    //     $this->addFlash( 'dark', 'Vous êtes bien déconnecté' );
+    //     return $this->redirectToRoute( 'homepage' );
+    // }
 
     /**
      * @Route("/forgot_pass", name="app_forgotten_password")

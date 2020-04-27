@@ -8,8 +8,12 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import '../css/app.scss';
 import '../css/register.scss';
+<<<<<<< HEAD
 import '../css/index.scss';
 
+=======
+import '../css/login.scss';
+>>>>>>> enableUser
 
 
 
