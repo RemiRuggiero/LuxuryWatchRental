@@ -22,6 +22,7 @@ class RegisterType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
             ->add('lastname', null, array(
                 'label' => 'Nom',
@@ -56,6 +57,7 @@ class RegisterType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'validation_groups' => ['Default', 'registration'],
         ]);
     }
 }
