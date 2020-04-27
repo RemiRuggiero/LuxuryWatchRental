@@ -8,6 +8,7 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import '../css/app.scss';
 import '../css/register.scss';
+import '../css/login.scss';
 
 
 

@@ -134,6 +134,11 @@ class User implements UserInterface
      */
     private $reset_token;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $enable;
+
     public function __construct()
     {
         $this->locations = new ArrayCollection();
@@ -380,6 +385,18 @@ class User implements UserInterface
     public function setResetToken(?string $reset_token): self
     {
         $this->reset_token = $reset_token;
+
+        return $this;
+    }
+
+    public function getEnable(): ?bool
+    {
+        return $this->enable;
+    }
+
+    public function setEnable(?bool $enable): self
+    {
+        $this->enable = $enable;
 
         return $this;
     }
