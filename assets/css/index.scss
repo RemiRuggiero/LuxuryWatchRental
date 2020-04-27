@@ -1,0 +1,114 @@
+// Global + Background 
+.index{
+    display: flex;
+    font-family: 'Raleway';    
+    background-image: url('../images/background-accueil.jpg');
+    background-size: cover;
+    position: relative;
+    height: 90vh;
+
+}
+
+    
+    // Contenu de la page
+    .index-content{
+         
+        display: flex;
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center;
+
+        //Logo
+        img.logolwr{
+
+            height: 35%
+        }
+
+        // Ligne de séparation
+        hr{
+            width: 80%;
+            border: none;
+            border-bottom: 0.1px inset white;
+            margin: 2em;
+        }        
+
+        p{
+            color:white;
+            text-align: center;
+            font-size: 10px;
+            margin-left: 3em;
+            margin-right: 3em;
+            margin-bottom: 0em;
+        }
+
+        // Bouton "louer Maintenant"
+        .btn-warning{
+            background-color:rgba(247, 181, 0, 0.795);
+            padding:1em;
+            font-family: 'Raleway';
+            font-weight: 600;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            margin-top: 2em;
+            font-size: 10pt;
+            color: black!important;            
+        }
+
+        .btn-warning:hover{
+            background-color: rgb(247, 181, 0);
+        }
+
+}
+
+// Gestion du Responsive
+@media only screen and ( min-width: 600px){
+    .index-content{
+   
+
+
+        img.logolwr{
+
+            height: 50%
+        }
+
+
+        p{
+            color:white;
+            text-align: center;
+            font-size: 13px;
+            margin-left: 3em;
+            margin-right: 3em;
+            margin-bottom: 0em;
+        }
+
+        .btn-warning{
+            font-size: 12pt; 
+        }
+    }
+}
+
+@media only screen and ( min-width: 991px){
+    .index-content{
+
+
+        hr{
+            width: 85%;
+            border: none;
+            border-bottom: 0.1px inset white;
+            margin: 2em;
+        }
+
+        p{
+            color:white;
+            text-align: center;
+            font-size: 16px;
+            margin-left: 6em;
+            margin-right: 6em;
+            margin-bottom: 0em;
+        }
+
+    }
+}
+
+
+
