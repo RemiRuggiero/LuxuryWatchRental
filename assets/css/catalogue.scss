@@ -1,0 +1,49 @@
+//
+//Gestion des cartes de montre
+//
+
+.maleWatch{
+
+//Carte
+.card.watch{
+    box-shadow: 1px 1px 10px black;
+}
+
+
+// Image montre
+
+.card-img-top{
+
+    background-clip: content-box;
+    padding: 0.5em;
+    height: 300px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+//head de la carte
+
+.head{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.cardNav{
+    display:flex;
+    list-style: none;
+}
+
+.cardNav li{
+    margin-left: 0.5em;
+}
+
+//bottom de la carte
+
+.bottom{
+    text-align: center;
+}
+
+
+}

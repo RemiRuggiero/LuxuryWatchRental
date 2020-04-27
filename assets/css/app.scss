@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;600&display=swap');
 @import '~@fortawesome/fontawesome-free/css/all.css';
+<<<<<<< HEAD
 
+=======
+>>>>>>> MaleCatalogue
 
 
 // CSS navbar 
@@ -45,4 +48,24 @@ footer{
     font-family: 'Raleway';
     font-weight: 300;
     font-size: 14px;
+<<<<<<< HEAD
 }
+=======
+}
+
+// Gestion des titres
+h1{
+    font-family: 'Raleway';
+    font-weight: 400;
+}
+
+// CSS Vous n'avez pas de compte ?
+.register-you{
+    margin-left: 1em;
+    font-family: 'Raleway';
+    font-weight: 600;
+    font-size: 14px;
+    color: black;
+}
+
+>>>>>>> MaleCatalogue
