@@ -54,4 +54,11 @@ class Picture
 
         return $this;
     }
+
+    public function getName(){
+        $pictureName = str_replace( '\\', '/',  $this->getPicture() );
+        $pictureName = explode('/', $pictureName);
+        /* dd($pictureName); */  
+        return end($pictureName);
+    }
 }
