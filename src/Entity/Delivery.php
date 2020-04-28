@@ -49,7 +49,7 @@ class Delivery
     private $returned_at;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\DeliveryCompany", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\DeliveryCompany", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $delivery_company;

@@ -388,8 +388,6 @@ class User implements UserInterface
 
         return $this;
     }
-<<<<<<< HEAD
-=======
 
     public function getEnable(): ?bool
     {
@@ -402,6 +400,5 @@ class User implements UserInterface
 
         return $this;
     }
->>>>>>> 0b2431ccea03936318b543014d028b9945326191
 
 }

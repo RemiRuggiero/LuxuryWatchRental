@@ -26,8 +26,5 @@ security:
         
     access_control:
             - { path: ^/(register|login)$, allow_if: "is_anonymous()" }
-<<<<<<< HEAD
-            - { path: ^/(register|account)$, roles: ROLE_USER }
-=======
-            
->>>>>>> 0b2431ccea03936318b543014d028b9945326191
+            - { path: ^/(account)$, roles: ROLE_USER }
+

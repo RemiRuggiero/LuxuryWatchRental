@@ -271,8 +271,17 @@ class UserController extends AbstractController
     public function account()
     {
         $currentUser = $this->getUser();
+        $locations = $currentUser->getLocations();
+        
+        /* foreach( $locations as $location){
+            $watchEntity = $location['watchEntity'];
+        } */
+        //$watchModel = $watchEntity->getWatchModel();
+        
         return $this->render('user/account.html.twig' , array(
-            'user' => $currentUser
+            'user' => $currentUser,
+            'locations' => $locations,
+            //'watch' => $watchModel
         ));
     }
 
