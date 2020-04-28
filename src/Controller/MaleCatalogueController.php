@@ -42,5 +42,14 @@ class MaleCatalogueController extends AbstractController
 
     }
 
+        /**
+     * @Route("/watch/{id}", name="watch_show", requirements={"id"="\d+"})
+     */
+    public function show( $id )
+    {
+        return $this->render( 'one_watch/show.html.twig', array(
+            'watch' => $this->watchlistService->get( $id ),
+        ));
+    }
     
 }
