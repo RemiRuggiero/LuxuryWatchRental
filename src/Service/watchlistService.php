@@ -18,9 +18,13 @@ class watchlistService{
         return $this->WatchModelRepository->findByGender(1);
     }
 
-    public function get( $id ){
-        return $this->WatchModelRepository->find( $id );
+    public function listF(){
+        
+        return $this->WatchModelRepository->findByGender(0);
     }
 
+    public function get( $id ){
+        return $this->WatchModelRepository->find( $id );    
+    }
 
 }
