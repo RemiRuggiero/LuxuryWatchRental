@@ -14,7 +14,10 @@ class PicturesType extends AbstractType
     {
         $builder
             ->add('picture', FileUploadType::class, array( 
-                'upload_dir'=>'public/uploads'
+                'upload_dir'=>'public/uploads',
+                'upload_filename'=> uniqid().'.[extension]',
+                'download_path'=>'uploads/',
+                
             ) )
         ;
     }

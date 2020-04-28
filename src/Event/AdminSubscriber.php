@@ -7,6 +7,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use App\Entity\User;
 use App\Entity\WatchModel;
+use Symfony\Component\HttpKernel\DataCollector\DumpDataCollector;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AdminSubscriber implements EventSubscriberInterface
@@ -23,10 +24,11 @@ class AdminSubscriber implements EventSubscriberInterface
     {
         return array(
             'easy_admin.pre_persist' => array( 'prepersist'),
-            'easy_admin.pre_update' => array( 'getAllPictures'),
+            'easy_admin.pre_update' => array( 'getAllPictures'), 
         
         );
     }
+
 
     public function prepersist( GenericEvent $event )
     {
@@ -72,4 +74,5 @@ class AdminSubscriber implements EventSubscriberInterface
 
     
     }
+
 }

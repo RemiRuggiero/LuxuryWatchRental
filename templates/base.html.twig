@@ -25,12 +25,13 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse " id="navbarSupportedContent" style="justify-content: flex-end">
+                <ul class="navbar-nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ path('homepage') }}">Accueil</a>
                     </li>
                     <li class="nav-item dropdown">
+<<<<<<< HEAD
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Catalogue
                         </a>
@@ -43,6 +44,20 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Mon panier</a>
+=======
+                        <a class="nav-link dropdown-toggle categories" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Catégories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="{{ path('male_catalogue') }}">Homme</a>
+                          <a class="dropdown-item" href="{{ path('female_catalogue') }}">Femme</a>
+                        </div></li>
+                 {# <li class="nav-item">
+                        <a class="nav-link" href="#">Mon compte</span></a>
+                    </li> #}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Mon panier</i></a>
+>>>>>>> 0b2431ccea03936318b543014d028b9945326191
                     </li>
 
                     {% if app.user is empty %}
@@ -50,17 +65,23 @@
                         <a class="nav-link" href="{{ path('user_login') }}">Connexion/Inscription</a>
                     </li>
                     {% else %}
-                        <a href="{{ path('user_logout') }}" class="btn btn-dark">Déconnexion</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle categories" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mon compte</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="#">Page compte</a>
+                          <a  class="dropdown-item" href="{{ path('user_logout') }}" class="btn btn-dark">Déconnexion</a>
+                        </div>
+                    </li>                        
                     {% endif %}
                    
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                {# <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> #}
-                </form>
+                    {# <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    </form> #}
                 
             </div>
         </nav>
+        
         <div class="toaster">
             {% for label, messages in app.flashes %}
                {% for message in messages %}
@@ -80,7 +101,8 @@
     </main>
 
     <footer>
-        <ul class="navbar-nav mr-auto">
+        <img src="{{ asset("/build/images/DeliveryFooter.png") }}" class="pictofooter" alt="Logo LWR">
+        <ul class="navbar-nav mr-auto contacts">
             <li class="nav-item">
                 <a class="nav-link" href="#">Qui sommes nous ?</a>
             </li>
@@ -94,6 +116,14 @@
                 <a class="nav-link" href="#">FAQ</a>
             </li>
         </ul>
+        <div id="socials">
+            <div><a href=""><i class="fab fa-facebook-f"></i></a></div>
+            <div><a href=""><i class="fab fa-instagram"></i></a></div>
+            <div><a href=""><i class="fab fa-twitter"></i></a></div>
+        </div>
+        <div id="copyright">
+            <p>© 2020 Luxury Watch Rental</p>
+        </div>
     </footer>
 
 
