@@ -25,4 +25,4 @@ security:
         
     access_control:
             - { path: ^/(register|login)$, allow_if: "is_anonymous()" }
-            - { path: ^/(register|account)$, roles: ROLE_USER }
+            - { path: ^/(account)$, roles: ROLE_USER }

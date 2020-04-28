@@ -4,23 +4,89 @@
 
 {% block body %}
 
-<div class="container">
+<div class="account container">
     <h1>Bienvenue {{ user.firstname }} </h1>
     <h2>Mes coordonnées</h2>
+    <div>
+        <div class="form-group">
+            <label for="lastname">Nom</label>
+            <input name="lastname" type="text" class="form-control" id="lastname" value="{{ user.lastname }}" disabled="disabled">
+        </div>
+        <div class="form-group">
+            <label for="firstname">Prénom</label>
+            <input name="firstname" type="text" class="form-control" id="firstname" value="{{ user.firstname }}" disabled="disabled">
+        </div>
+        <div class="form-group">
+            <label for="birthday">Date de naissance</label>
+            <input name="birthday" type="date" class="form-control" id="birthday"  value="{{ date(user.birthday)|date('d/m/Y') }}" disabled="disabled">
+        </div>
+        <div class="form-group">
+            <label for="tel">Téléphone</label>
+            <input name="tel" class="form-control" id="tel"  value="{% if(user.phoneNumber)%} {{ user.phoneNumber }} {% else %} Vous n'avez pas renseigné de numéro {% endif %}" disabled="disabled">
+        </div>
+        <div class="form-group">
+            <label for="adress">Adresse</label>
+            <input name="adress" class="form-control" id="adress"  value="{% if(user.address)%} {{ user.address }} {% else %} Vous n'avez pas renseigné d'adresse {% endif %}" disabled="disabled">
+        </div>
+        <div class="form-group">
+            <label for="town">Ville</label>
+            <input name="town" class="form-control" id="town"  value="{% if(user.town)%} {{ user.town }} {% else %} Vous n'avez pas renseigné de ville {% endif %}" disabled="disabled">
+        </div>
+        <div class="form-group">
+            <label for="zipcode">Code postal</label>
+            <input name="zipcode" class="form-control" id="zipcode"  value="{% if(user.zipcode)%} {{ user.zipcode }} {% else %} Vous n'avez pas renseigné de code postal {% endif %}" disabled="disabled">
+        </div>
+        <div class="form-group">
+            <label for="country">Pays</label>
+            <input name="country" class="form-control" id="country"  value="{% if(user.country)%} {{ user.country }} {% else %} Vous n'avez pas renseigné de pays {% endif %}" disabled="disabled">
+        </div>
+    </div>
     <hr>
     <h2> Mes locations </h2>
         {% for location in locations %}
+        {% set today = date() %}
+            {% if date( location.endsAt ) > today %}
+                {% set status = {class: "warning", text: "En cours"} %}
+            {% else %}
+                {% set status = {class: "danger", text: "Passé"} %}
+            {% endif %}
+        <h5>
+            Location numéro : {{ location.locationNumber }} 
+            <div class="badge badge-pill badge-{{ status.class }}">
+            {{ status.text }}
+            </div>
+        </h5>
+        {% set today = date("+5 days") %}
+        {% if date( location.endsAt ) <= today %}
+        <div class="alert alert-warning" role="alert">
+           Votre location <b> {{ location.locationNumber }} </b> est bientôt terminée ! Pensez à télécharger le bordereau d'envoi <a href="{{ asset( 'build/images/shipping.pdf') }}">ici</a> et à nous deposer votre montre dans un point relais le <b>{{ date( location.endsAt )|date('d/m/Y') }} </b>
+          </div>
+        {% endif %}
         <ul>
             <li>
-                <h5>Numéro de location : {{ location.locationNumber }}</h5>
+                Date de debut de location : {{ date( location.startsAt )|date('d/m/Y H:i') }}
             </li>
             <li>
-                <p> Date de debut de location : {{ date( location.startsAt )|date('d/m/Y H:i') }}</p>
+                Date de fin de location : {{ date(location.endsAt)|date('d/m/Y H:i') }}
             </li>
             <li>
-                <p> Date de debut de fin : {{ date( location.endsAt )|date('d/m/Y H:i') }}</p>
+                 Prix total : {{ location.amount }} €
             </li>
         </ul>
+        <h5>Votre montre : </h5>
+            <ul>
+                <li> 
+                    {{ location.watchEntity.watchModel.brand }} 
+                </li>
+                <li>
+                    {{ location.watchEntity.watchModel }}
+                </li>
+                <li>
+                    Numéro de série : {{ location.watchEntity }}
+                </li>
+            </ul>
+            <p> Vous souhaitez procéder au retour ? <a href="{{ asset( 'build/images/shipping.pdf') }}" target="_blank"> <b> Cliquez ici ! </b> </a></p>
+            <hr>
         {% endfor %}
         
 </div>
