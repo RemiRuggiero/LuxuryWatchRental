@@ -38,13 +38,14 @@ class WatchModelRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('w')
             ->select('w')
             /* ->from("App\Entity\WatchModel", 'w') */
-            ->where('w.gender = :gender')
+            ->where('w.gender = :gender OR w.gender = 2')
             ->setParameter('gender', $gendermale)
             ->getQuery()
             ->getResult()
         
         ;
     }
+
 
     // /**
     //  * @return WatchModel[] Returns an array of WatchModel objects
