@@ -13,7 +13,7 @@ class watchlistService{
         
     }
 
-    public function list(){
+    public function listM(){
         
         return $this->WatchModelRepository->findByGender(1);
     }
@@ -23,5 +23,10 @@ class watchlistService{
         return $this->WatchModelRepository->findByGender(0);
     }
 
+    public function listA(){
+
+        return $this->WatchModelRepository->findAll();
+
+    }
 
 }
