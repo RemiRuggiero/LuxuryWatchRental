@@ -48,6 +48,7 @@ class User implements UserInterface
     private $lastname;
 
     /**
+     * @Assert\NotBlank( message = "Vous devez saisir votre date de naissance" )
      * @Assert\LessThanOrEqual("-18 years", message = "Vous devez être majeur pour créer un compte")
      * @ORM\Column(type="date")
      */
@@ -178,7 +179,7 @@ class User implements UserInterface
         return $this->birthday;
     }
 
-    public function setBirthday(\DateTimeInterface $birthday): self
+    public function setBirthday($birthday): self
     {
         $this->birthday = $birthday;
 

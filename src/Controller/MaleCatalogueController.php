@@ -32,7 +32,7 @@ class MaleCatalogueController extends AbstractController
     {
         $watches = $request->query->get('list');
        
-        $maleWatches = $this->watchlistService->list();
+        $maleWatches = $this->watchlistService->listM();
 
         return $this->render( 'male_catalogue/maleCatalogue.html.twig', array(
             'watches' => $maleWatches,
