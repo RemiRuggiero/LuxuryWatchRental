@@ -14,8 +14,26 @@
         margin: 5px;
     }
 
+    // Bouton Dropdown "Catégories"
+    div.dropdown-menu.show{
+        background-color: black;
+    }
+
+    a.dropdown-item{
+        background-color: rgba(247, 181, 0, 0.795);        
+    }
+
+    a.dropdown-item:hover{
+        background-color: rgb(247, 181, 0);       
+    }
+
+
+    .dropdown-menu{
+        font-size: 12pt;
+    }
+
     img{
-        height: 4vh;
+        height: 4.5vh;
         width: auto;
         margin-left: 1em;
     } 
@@ -24,16 +42,54 @@
 // CSS footer
 footer{
     background-color: black;
-    display: flex;
+    display: block;
+    text-align: center;
+
+    .pictofooter{
+        height: 17vh;
+        margin-top: 1em;
+    }
     ul{
-        margin: auto;
-        
+        margin: auto;        
     }
     .nav-link{
         font-family: 'Raleway';
         font-weight: 300;
-        color:white;
-        
+        font-size: 10pt;
+        color:rgb(80, 80, 80);        
+    }
+
+    .navbar-nav .nav-link {
+        padding-top: 0.5em;
+        padding-bottom: 0em;
+    }
+
+    .nav-item {
+        margin-right: 0em;
+    }
+
+    #socials{
+        display: flex;
+        justify-content: center;
+    }
+    a{
+        color:rgb(80, 80, 80);
+    }
+
+    a:hover{
+        color: white ;
+    }
+
+    i{
+        margin: 0.5em;
+        font-size: 20pt;        
+    }
+
+    p{
+        font-family: 'Raleway';
+        font-weight: 400;
+        font-size: 10pt;
+        margin-bottom: auto;
     }
 }
 
@@ -44,4 +100,24 @@ footer{
     font-family: 'Raleway';
     font-weight: 300;
     font-size: 14px;
+<<<<<<< HEAD
 }
+=======
+}
+
+// Gestion des titres
+h1{
+    font-family: 'Raleway';
+    font-weight: 400;
+}
+
+// CSS Vous n'avez pas de compte ?
+.register-you{
+    margin-left: 1em;
+    font-family: 'Raleway';
+    font-weight: 600;
+    font-size: 14px;
+    color: black;
+}
+
+>>>>>>> 7a872e5b11d5d8e514ca0e1d6f54f03f15eda0fb
