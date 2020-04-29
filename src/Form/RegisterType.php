@@ -38,7 +38,7 @@ class RegisterType extends AbstractType
                 'format' => 'dd/MMMM/y',
                 'placeholder' => array(
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
-                )
+                ),
             ))
             ->add('gender', ChoiceType::class, array(
                 'label' => "Sexe",
@@ -51,6 +51,7 @@ class RegisterType extends AbstractType
                 'invalid_message' => "Les mots de passe ne correspondent pas."
             ))
         ; 
+        
     }
 
     public function configureOptions(OptionsResolver $resolver)
