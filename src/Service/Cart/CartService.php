@@ -2,7 +2,9 @@
 
 namespace App\Service\Cart;
 
+use App\Repository\DeliveryCompanyRepository;
 use App\Repository\WatchModelRepository;
+
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CartService
@@ -15,6 +17,7 @@ class CartService
     {
         $this->session = $session;
         $this->watchModelRepository = $watchModelRepository;
+        
     }
     public function add(int $id)
     {
@@ -72,4 +75,5 @@ class CartService
 
         return $total;
     }
+
 }

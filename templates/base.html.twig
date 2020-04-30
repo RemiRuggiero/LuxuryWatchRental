@@ -38,9 +38,9 @@
                           <a class="dropdown-item" href="{{ path('male_catalogue') }}">Homme</a>
                           <a class="dropdown-item" href="{{ path('female_catalogue') }}">Femme</a>
                         </div></li>
-                 {# <li class="nav-item">
+                    {# <li class="nav-item">
                         <a class="nav-link" href="#">Mon compte</span></a>
-                    </li> #}
+                    </li>  #}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('cart_index') }}">Mon panier</i></a>
                     </li>
@@ -53,7 +53,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle categories" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mon compte</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="#">Page compte</a>
+                          <a class="dropdown-item" href="{{ path('account') }}">Page compte</a>
                           <a  class="dropdown-item" href="{{ path('user_logout') }}" class="btn btn-dark">Déconnexion</a>
                         </div>
                     </li>                        
