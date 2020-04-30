@@ -19,6 +19,22 @@ class DeliveryCompanyRepository extends ServiceEntityRepository
         parent::__construct($registry, DeliveryCompany::class);
     }
 
+
+    // /**
+    //  * @return DeliveryCompany[] Returns an array of DeliveryCompany objects
+    //  */
+
+    // public function findById($id)
+    // {
+    //     return $this->createQueryBuilder('i')
+    //         ->where('i.id = :id')
+    //         ->setParameter('id', $id)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+
+    // }
+
     // /**
     //  * @return DeliveryCompany[] Returns an array of DeliveryCompany objects
     //  */

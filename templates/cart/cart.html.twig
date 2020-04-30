@@ -7,8 +7,9 @@
     <div class="bg-light p-3">
         <h1>Votre panier</h1>
     </div>
-
+    
     {% if items | length > 0 %}
+    
         <table class="table">
             <thead>
                 <tr>
@@ -40,14 +41,41 @@
                     <td colspan="3" class="text-right">Total : </td>
                     <td>{{ total }}</td>
                     <td>
-                        <a href="#" class="btn btn-danger btn-sm">Valider</a>
+                        <a href="{{ path('user_login') }}" class="btn btn-danger btn-sm">Valider</a>
                     </td>
                 </tr>
             </tfoot>
         </table>
     {% else %}
-        <p>Surprise, c'est vide !</p>
+        <p>Votre panier est vide !</p>
         
     {% endif %}
+        
+            
+    <!-- <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+        <label class="form-check-label" for="inlineRadio1">UPS</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <label class="form-check-label" for="inlineRadio2">La Poste</label>
+      </div> -->
+        
+     <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Livraison</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01">
+            {% for company in companies %}
+            <option value="1">{{ company.name }}</option>
+                
+            {% endfor %}
+          
+          
+          
+        </select>
+      </div> 
+
+      
 
 {% endblock %}

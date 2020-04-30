@@ -3,12 +3,19 @@
 namespace App\Controller;
 
 use App\Service\Cart\CartService;
+
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\DeliveryCompany\DeliveryCompanyService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 class CartController extends AbstractController
 {
+    private $deliveryCompanyService;
+    public function __construct( DeliveryCompanyService $deliveryCompanyService)
+    {
+        $this->DeliveryCompanyService = $deliveryCompanyService;
+    }
 
 
     /**
@@ -17,11 +24,14 @@ class CartController extends AbstractController
      */
     public function index(CartService $cartService)
     {
-        // $session->clear();
-    
-        return $this->render('cart/index.html.twig', [
+         
+        // $cartService->session->clear();
+
+        //dd($cartService->getFullCart());
+        return $this->render('cart/cart.html.twig', [
             'items' => $cartService->getFullCart(),
-            'total' => $cartService->getTotal()
+            'total' => $cartService->getTotal(),
+            'companies' => $this->DeliveryCompanyService->getDeliveryCompany()
         ]);
         
     }
@@ -34,7 +44,7 @@ class CartController extends AbstractController
     {
         $cartService->add($id);
 
-        return $this->redirectToRoute("cart_index");
+       return $this->redirectToRoute("cart_index");
     }
 
     /**
@@ -46,4 +56,6 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute('cart_index');
     }
+
+     
 }
