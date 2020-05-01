@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Service\Cart\CartService;
 
+use App\Controller\OneWatchController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\DeliveryCompany\DeliveryCompanyService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,7 +41,7 @@ class CartController extends AbstractController
     /**
      * @Route("/panier/add/{id}", name="cart_add")
      */
-    public function add($id, CartService $cartService)
+    public function add($id, CartService $cartService )
     {
         $cartService->add($id);
 

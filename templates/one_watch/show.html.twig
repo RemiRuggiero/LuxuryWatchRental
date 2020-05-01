@@ -58,10 +58,15 @@
         <div class="dateresa">Date de retour du produit</div>
         <input type="date" class="form-control" value="now">
       </div> -->     
+
+      <form name="daterange" action="{{ path('cart_add', {'id': watch.id}) }}" method="post">
+        <input id='daterange' type="dd/MMMM/y" name="daterange" value="daterange" />
+        <button type="submit" name="daterange" value="daterange" class="btn-link">Suce mon panier</button>
+      </form>
     
     <!-- Caractéristiques produit -->
     <p class="price">à partir de <b>{{ watch.price }}€</b> / jour</p>
-    <a href="{{ path('cart_add', {'id': watch.id}) }}" class="btn btn-dark">AJOUTER AU PANIER</a>
+    
    
     <p class="caract">CARACTÉRISTIQUES</p>
     <table class="table table-striped">

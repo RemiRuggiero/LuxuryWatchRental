@@ -2,14 +2,15 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\WatchModel;
+use App\Service\Cart\CartService;
+use App\Service\watchlistService;
+use App\Repository\WatchModelRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Entity\WatchModel;
-use App\Service\watchlistService;
-use App\Repository\WatchModelRepository;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MaleCatalogueController extends AbstractController
 {
@@ -42,11 +43,13 @@ class MaleCatalogueController extends AbstractController
 
     }
 
-        /**
+    /**
      * @Route("/watch/{id}", name="watch_show", requirements={"id"="\d+"})
      */
-    public function show( $id )
+    public function show( $id, Request $request, CartService $cartService )
     {
+        $dateRange = $request->request->get('daterange');
+        /* $this->session->set(); */
         return $this->render( 'one_watch/show.html.twig', array(
             'watch' => $this->watchlistService->get( $id ),
         ));
