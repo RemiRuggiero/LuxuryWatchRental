@@ -23,6 +23,15 @@ $(function() {
   var currentMonth = date.getMonth();
   var currentDate = date.getDate();
   var currentYear = date.getFullYear();
+  
+  var btn = document.getElementById('btn');
+  var daterange = document.getElementById('daterange');
+
+  daterange.addEventListener('click', function(e){
+    e.preventDefault;
+    console.log(daterange.value);
+  })
+  
 
   $('input[name="daterange"]').daterangepicker({
     opens: 'right',
@@ -31,6 +40,8 @@ $(function() {
   }, function(start, end, label) {
      console.log("A new date selection was made: " + start.format('dd/MMMM/y') + ' to ' + end.format('dd/MMMM/y'));
   });
-  var daterange = document.getElementById('daterange');
-  console.log('daterange');
+  
+  
+
+
 });
