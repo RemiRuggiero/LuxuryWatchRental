@@ -2,6 +2,7 @@
 
 {% block title %} Ma sélection - {{ parent() }}{% endblock %}
 
+
 {% block body %}
 <div class="container">
 
@@ -42,7 +43,7 @@
           <a href="#"><i class="far fa-2x fa-heart" style="color:black"></i></a>
       </li>
       <li>
-          <a href="#"><i class="fas fa-2x fa-cart-arrow-down" style="color:black"></i></a>
+          <a href="{{ path('cart_add', {'id': watch.id}) }}"><i class="fas fa-2x fa-cart-arrow-down" style="color:black"></i></a>
       </li>
     </ul>
 
@@ -51,17 +52,22 @@
     <!-- Calendrier, infos & Bouton "ajouter au panier" -->
     <p class="textresa">INDIQUER LA DURÉE DE RÉSERVATION SOUHAITÉE</p>
     
-    <div class="calendar">
+    <!-- <div class="calendar">
         <div class="dateresa">Date de début de location</div>
         <input type="date" class="form-control" value="now">
 
         <div class="dateresa">Date de retour du produit</div>
         <input type="date" class="form-control" value="now">
-      </div>
-    
+      </div> -->
+
+      <input type="text" name="daterange" value=""/>
+
+      
+  
+   
     <!-- Caractéristiques produit -->
     <p class="price">à partir de <b>{{ watch.price }}€</b> / jour</p>
-    <a href="#" class="btn btn-dark">AJOUTER AU PANIER</a>
+    <a href="{{ path('cart_add', {'id': watch.id}) }}" class="btn btn-dark">AJOUTER AU PANIER</a>
    
     <p class="caract">CARACTÉRISTIQUES</p>
     <table class="table table-striped">
@@ -140,4 +146,23 @@
   </table>
   <hr class="low">
 </div>      
+{% endblock %}
+
+{% block javascripts%}
+
+ <script>
+$(function() {
+  $('input[name="daterange"]').daterangepicker({
+    ranges: {
+        'Today': [moment(), moment()],
+        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        
+    },
+    opens: 'left'
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
+</script>
 {% endblock %}

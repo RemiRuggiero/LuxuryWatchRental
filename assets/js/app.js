@@ -6,6 +6,7 @@ import '../css/login.scss';
 import '../css/catalogue.scss';
 import '../css/account.scss';
 import '../css/show.scss';
+import '../css/cart.scss';
 
 
 
@@ -14,5 +15,5 @@ import '../css/show.scss';
 
 // Page: "show.html.twig" -> Gestion transition image du carousel
 $('.carousel').carousel({
-  interval: 6000
+  interval: 60000
 })
