@@ -52,13 +52,9 @@ class MaleCatalogueController extends AbstractController
     /**
      * @Route("/watch/{id}", name="watch_show", requirements={"id"="\d+"})
      */
-    public function show( $id, Request $request,  SessionInterface $session )
+    public function show( $id, Request $request, CartService $cartService,  SessionInterface $session )
     {
-         $dateRange = $request->request->get('daterange');
-        $date = 12;
-        $session->set('date', $dateRange); 
-        //dd($session->get('date'));
-        
+       
         return $this->render( 'one_watch/show.html.twig', array(
             'watch' => $this->watchlistService->get( $id ),
         ));

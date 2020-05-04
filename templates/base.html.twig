@@ -4,13 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}LWR{% endblock %}</title>
+    <meta name="description" content="Luxury Watch Rental, la location de luxe qui vous offre la possibilité de louer les marques de montres les plus prestigieuses au monde tel que Rolex, Breitling, Panerai... pour une location à court ou à long terme selon vos besoin">
+    <title>{% block title %}Luxury Watch Rental, Location de montres de luxe{% endblock %}</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('build/images/Favicon_LWR.png')}}">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;600&display=swap" rel="stylesheet">    
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lux/bootstrap.min.css" rel="stylesheet">
-
+    <!-- Daterangepicker -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     {{ encore_entry_link_tags('app') }}
     {% block stylesheets %}

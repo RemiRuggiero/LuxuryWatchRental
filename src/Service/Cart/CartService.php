@@ -19,19 +19,17 @@ class CartService
         $this->watchModelRepository = $watchModelRepository;
         
     }
-    public function add(int $id)
+    public function add(int $id, $date)
     {
         $panier = $this->session->get('panier', []);
-
+       
         if(!empty($panier[$id]))
         {
             $panier[$id]++;
         } else {
             $panier[$id] = 1;
-        }
-
+        }        
         
-
         $this->session->set('panier', $panier);
     }
 
