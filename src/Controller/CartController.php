@@ -8,7 +8,8 @@ use App\Controller\OneWatchController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\DeliveryCompany\DeliveryCompanyService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CartController extends AbstractController
 {
@@ -23,10 +24,11 @@ class CartController extends AbstractController
      * @Route("/panier", name="cart_index")
      * 
      */
-    public function index(CartService $cartService)
+    public function index(CartService $cartService, SessionInterface $session, Request $request)
     {
          
-        // $cartService->session->clear();
+       // $session->clear();
+        var_dump($session->get('date'));
 
         //dd($cartService->getFullCart());
         return $this->render('cart/cart.html.twig', [
@@ -41,9 +43,12 @@ class CartController extends AbstractController
     /**
      * @Route("/panier/add/{id}", name="cart_add")
      */
-    public function add($id, CartService $cartService )
+    public function add($id, CartService $cartService, SessionInterface $session, Request $request )
     {
-        $cartService->add($id);
+        $date = $request->request->get('daterange');
+        // $session->set('date', $dateRange ); 
+        $cartService->add($id, $date);
+    
 
        return $this->redirectToRoute("cart_index");
     }

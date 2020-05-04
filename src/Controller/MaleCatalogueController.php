@@ -11,12 +11,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class MaleCatalogueController extends AbstractController
 {
 
 
     private $watchlistService;
+    private $session;
     
 
     public function __construct( watchlistService $watchlistService){
@@ -46,10 +48,9 @@ class MaleCatalogueController extends AbstractController
     /**
      * @Route("/watch/{id}", name="watch_show", requirements={"id"="\d+"})
      */
-    public function show( $id, Request $request, CartService $cartService )
+    public function show( $id, Request $request, CartService $cartService,  SessionInterface $session )
     {
-        $dateRange = $request->request->get('daterange');
-        /* $this->session->set(); */
+       
         return $this->render( 'one_watch/show.html.twig', array(
             'watch' => $this->watchlistService->get( $id ),
         ));

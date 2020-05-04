@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Ma sélection - {{ parent() }}{% endblock %}
+{% block title %} Montre - {{ parent() }}{% endblock %}
 
 {% block body %}
 <div class="container">
@@ -59,9 +59,9 @@
         <input type="date" class="form-control" value="now">
       </div> -->     
 
-      <form name="daterange" action="{{ path('cart_add', {'id': watch.id}) }}" method="post">
-        <input id='daterange' type="dd/MMMM/y" name="daterange" value="daterange" />
-        <button type="submit" name="daterange" value="daterange" class="btn-link">Suce mon panier</button>
+      <form name="dateform" action="{{ path('cart_add', {'id': watch.id}) }}" method="POST">
+        <input id='daterange' type="dd/MMMM/y" name="daterange" value="01/01/2018 - 01/15/2018" />
+        <button type="submit" name="ok" value="ok" class="btn-link">VALIDER</button>
       </form>
     
     <!-- Caractéristiques produit -->
