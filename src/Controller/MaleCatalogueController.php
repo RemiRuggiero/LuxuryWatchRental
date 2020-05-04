@@ -38,9 +38,11 @@ class MaleCatalogueController extends AbstractController
         $watches = $request->query->get('list');
        
         $maleWatches = $this->watchlistService->listM();
+        $title ="Montres homme";
 
-        return $this->render( 'male_catalogue/maleCatalogue.html.twig', array(
+        return $this->render( 'catalogue/catalogue.html.twig', array(
             'watches' => $maleWatches,
+            'title' => $title
             
         ));
          

@@ -32,12 +32,12 @@ class AllWatchesController extends AbstractController
         $watches = $request->query->get('list');
        
         $allWatches = $this->watchlistService->listA();
+        $title = "Nos montres";
 
-        return $this->render( 'all_watches/all_watches.html.twig', array(
+        return $this->render( 'catalogue/catalogue.html.twig', array(
             'watches' => $allWatches,
-            
+            'title' => $title
         ));
          
-
     }
 }
