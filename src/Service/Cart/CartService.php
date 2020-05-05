@@ -48,7 +48,7 @@ class CartService
     public function getFullCart() : array 
     {
         $panier = $this->session->get('panier', []);
-        $date = $this->session->get('date');
+        // $date = $this->session->get('date');
         $panierWithData = [];
 
         foreach($panier as $id => $quantity)
@@ -56,7 +56,7 @@ class CartService
             $panierWithData[] = [
                 'product' => $this->watchModelRepository->find($id),
                 'quantity' => $quantity,
-                'date' => $date
+                // 'date' => $date
             ];
         }
 
