@@ -27,8 +27,19 @@ class CartController extends AbstractController
     public function index(CartService $cartService, SessionInterface $session, Request $request)
     {
          
-       // $session->clear();
-        var_dump($session->get('date'));
+        // $session->clear();
+        /* $date = $session->get('date');
+        $d = explode(' - ', $date);
+        $startsAt = $d[0];
+        $endsAt = $d[1];
+        var_dump($startsAt);
+        var_dump($endsAt); */
+        var_dump($session->get('a'));
+        echo '<pre>' ;
+        var_dump($session->get('panier'));
+        echo '</pre>' ;
+        //dd($cartService->getFullCart());
+        
 
         //dd($cartService->getFullCart());
         return $this->render('cart/cart.html.twig', [
@@ -46,7 +57,8 @@ class CartController extends AbstractController
     public function add($id, CartService $cartService, SessionInterface $session, Request $request )
     {
         $date = $request->request->get('daterange');
-        // $session->set('date', $dateRange ); 
+
+        $session->set('date', $date ); 
         $cartService->add($id, $date);
     
 
@@ -54,11 +66,11 @@ class CartController extends AbstractController
     }
 
     /**
-     * @Route("/panier/remove/{id}", name="cart_remove")
+     * @Route("/panier/remove/{id}/{key}", name="cart_remove")
      */
-    public function remove($id, CartService $cartService)
+    public function remove($id, $key, CartService $cartService)
     {
-        $cartService->remove($id);
+        $cartService->remove($id, $key);
 
         return $this->redirectToRoute('cart_index');
     }

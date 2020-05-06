@@ -19,6 +19,23 @@ class LocationRepository extends ServiceEntityRepository
         parent::__construct($registry, Location::class);
     }
 
+
+
+
+
+    /**
+    * @return Location[] Returns an array of Location objects
+    */
+    public function findByWatchEntitiesId($id)
+    {
+        return $this->createQueryBuilder('i')
+            ->select('i')
+            ->andWhere('i.watch_entity = :val')
+            ->setParameter('val', $id)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Location[] Returns an array of Location objects
     //  */

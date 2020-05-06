@@ -13,18 +13,26 @@
     <!-- Carousel -->
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
+
           <div class="carousel-item active">
             {% set picture = ( watch.pictures.0.name matches '/^http/' ) ? watch.pictures.0.name : asset( 'uploads/' ~ watch.pictures.0.name ) %}
             <img src="{{ picture }}" class="d-block w-100" alt="visuel montre 1">
           </div>
-          <div class="carousel-item">
+          
+          {% if watch.pictures.1.name is defined %}
+          <div class="carousel-item">          
             {% set picture = ( watch.pictures.1.name matches '/^http/' ) ? watch.pictures.1.name : asset( 'uploads/' ~ watch.pictures.1.name ) %}
             <img src="{{ picture }}" class="d-block w-100" alt="Visuel montre 2">
           </div>
-          <div class="carousel-item">
+          {% endif %}
+
+          {% if watch.pictures.2.name is defined %}
+          <div class="carousel-item">          
             {% set picture = ( watch.pictures.2.name matches '/^http/' ) ? watch.pictures.2.name : asset( 'uploads/' ~ watch.pictures.2.name ) %}
             <img src="{{ picture }}" class="d-block w-100" alt="Visuel montre 3">
           </div>
+          {% endif %}
+
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="false"></span>
@@ -36,33 +44,23 @@
         </a>
       </div>
 
-    <!-- Favicon panier & favoris -->
-    <ul class="cardNav">
-      <li>
-          <a href="#"><i class="far fa-2x fa-heart" style="color:black"></i></a>
-      </li>
-      <li>
-          <a href="{{ path('cart_add', {'id': watch.id}) }}"><i class="fas fa-2x fa-cart-arrow-down" style="color:black"></i></a>
-      </li>
-    </ul>
-
     <hr class="souscarousel">
 
     <!-- Calendrier, infos & Bouton "ajouter au panier" -->
     <p class="textresa">INDIQUER LA DURÉE DE RÉSERVATION SOUHAITÉE</p>
-    
-      <!-- <div class="calendar">
-        <div class="dateresa">Date de début de location</div>
-        <input type="date" class="form-control" value="now">
 
-        <div class="dateresa">Date de retour du produit</div>
-        <input type="date" class="form-control" value="now">
-      </div> -->     
-
+    {#  {% for item in items %}
+        {% if item.stock == 0 %}
+        <p>pas de stock</p>
+      {% endif %}
+      {% else %} #}
+      <input type="hidden" id="catchDate" name="catchDate" value="{{ jsonArray }}">
       <form name="dateform" action="{{ path('cart_add', {'id': watch.id}) }}" method="POST">
         <input id='daterange' type="dd/MMMM/y" name="daterange" value="01/01/2018 - 01/15/2018" />
         <button type="submit" name="ok" value="ok" class="btn-link">VALIDER</button>
       </form>
+
+     {# {% endfor %} #}
     
     <!-- Caractéristiques produit -->
     <p class="price">à partir de <b>{{ watch.price }}€</b> / jour</p>
