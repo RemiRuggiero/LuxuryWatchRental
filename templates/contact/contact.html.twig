@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} SERVICE CLIENT - CONTACTEZ-NOUS {{ parent() }}{% endblock %}
+
+
+{% block body %}
+
+<div id="contactForm" class="mt-4">
+    <h1>CONTACTEZ-NOUS</h1>
+<p>Si vous souhaitez obtenir des informations complémentaires ou autre, n'hésitez pas à nous contacter via le formulaire ci-dessous. Nous vous répondrons dans les plus bref délais.</p>
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col">{{ form_row(form.firstname) }}</div>
+        <div class="col">{{ form_row(form.lastname) }}</div>
+    </div>
+    <div class="row">
+        <div class="col">{{ form_row(form.phone) }}</div>
+        <div class="col">{{ form_row(form.email) }}</div>
+    </div>
+    {{ form_rest(form) }}
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </div>
+    {{ form_end(form) }}
+</div>
+
+{# <form class="contact">
+    <h1>SERVICE CLIENT - CONTACTEZ-NOUS</h1>
+<p>Si vous souhaitez obtenir des informations complémentaires ou autre, n'hésitez pas à nous contacter via le formulaire ci-dessous. Nous vous répondrons dans les plus bref délais.</p>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputName">Nom</label>
+        <input type="text" class="form-control" id="inputName">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputLastName">Prénom</label>
+        <input type="text" class="form-control" id="inputLastName">
+      </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail">Email</label>
+          <input type="email" class="form-control" id="inputEmail">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPhone">Téléphone</label>
+          <input type="text" class="form-control" id="inputPhone">
+        </div>
+      </div>
+    <div class="form-group">
+      <label for="inputObject">Objet</label>
+      <input type="text" class="form-control" id="inputObject" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="Message">Message</label>
+        <textarea class="form-control" id="message" rows="10"></textarea>
+      </div>
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+  </form> #}
+
+   
+{% endblock %}
