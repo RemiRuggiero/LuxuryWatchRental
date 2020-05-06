@@ -15,7 +15,7 @@
                 <tr>
                     <th>Produit</th>
                     <th>Prix</th>
-                    <th>Quantité</th>
+                    
                     <th>Total</th>
                     <th></th>
                 </tr>
@@ -23,15 +23,16 @@
             <tbody>
                 {{ dump(items)}}
                 {% for item in items %}
+                
                
                 
                     <tr>
                         <td>{{ item.product.brand }}</td>
                         <td>{{ item.product.price }}</td>
-                        <td>{{ item.quantity }}</td>
-                        <td>{{ item.product.price * item.quantity }}</td>
+                        
+                        <td>{{ item.product.price * item.days }}</td>
                         <td>
-                            <a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-danger btn-sm">
+                            <a href="{{ path('cart_remove', {'id': item.product.id, 'key': item.key}) }}" class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
