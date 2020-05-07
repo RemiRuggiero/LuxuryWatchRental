@@ -38,6 +38,9 @@ class StockService
         $noDispo = [];
         foreach($locations as $location)
         {
+            if(empty($location)){
+            break;
+        }
             foreach($location as $l){
             $start = $l->getStartsAt();
             $end = $l->getEndsAt();
@@ -50,9 +53,6 @@ class StockService
             }, $result );
         }
 
-        if(empty($days)){
-            break;
-        }
         
         // dd($days, $dateTime); 
             foreach($days as $day)
