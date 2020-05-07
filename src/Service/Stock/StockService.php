@@ -29,10 +29,8 @@ class StockService
 
         $locations = [];
         foreach($watchEntitiesId as $entityId)
-        {          
-            
-            array_push( $locations, $this->locationRepository->findByWatchEntitiesId($entityId));
-        
+        {                      
+            array_push( $locations, $this->locationRepository->findByWatchEntitiesId($entityId));        
         }
         
         $noDispo = [];
