@@ -7,6 +7,7 @@ import '../css/catalogue.scss';
 import '../css/account.scss';
 import '../css/show.scss';
 import '../css/contact.scss';
+import '../css/cart.scss';
 
 
 
