@@ -49,7 +49,12 @@ class StockService
                 return new \DateTime(date('Y-m-d', $dayTimestamp));
             }, $result );
         }
-       // dd($days, $dateTime); 
+
+        if(empty($days)){
+            break;
+        }
+        
+        // dd($days, $dateTime); 
             foreach($days as $day)
             {               
                 if($day == $dateTime)
