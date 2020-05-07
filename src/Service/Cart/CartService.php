@@ -67,26 +67,22 @@ class CartService
         {
             $watchModel = $this->watchModelRepository->find($id);
             $watchEntities = $watchModel->getWatchEntities();
-            $stock = count($watchEntities);
+           
             
             foreach($watch as $date){
                 $date1 = new DateTime($date['startsAt']);
                 $date2 = $date1->diff(new DateTime($date['endsAt']));               
                 $key = array_search($date, $watch);                
                 
-                if($stock <= 0){
-                    return null;
-                }else{
-                    $stock--;
-                    $panierWithData[] = [
-                        'product' => $watchModel,
-                        'serialNumber' => $watchEntities,
-                        'days' => $date2->days,
-                        'startsAt' => $date['startsAt'],
-                        'endsAt' => $date['endsAt'],
-                        'key' => $key,
-                        'stock' => $stock
-                    ];} 
+                $panierWithData[] = [
+                    'product' => $watchModel,
+                    'serialNumber' => $watchEntities,
+                    'days' => $date2->days,
+                    'startsAt' => $date['startsAt'],
+                    'endsAt' => $date['endsAt'],
+                    'key' => $key,
+                    
+                ];
         }}
 
         return $panierWithData;
