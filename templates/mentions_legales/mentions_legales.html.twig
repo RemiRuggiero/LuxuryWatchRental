@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Mentions légales et politique de confidentialité {% endblock %}
+{% block title %} Mentions légales et politique de confidentialité - {{ parent() }} {% endblock %}
 
 {% block body %}
 
-<div class="row">    
+<div>    
     <div id="mentionsLegales" class="index-content">
         
         <img src="{{ asset('build/images/mention1.jpg') }}" alt="Mentions Legales" style="width: 70%;">
@@ -14,12 +14,6 @@
         <img src="{{ asset('build/images/mention5.jpg') }}" alt="Mentions Legales" style="width: 70%;">
         
     </div>
-    {# <div class="index-content">
-        
-        
-        <img src="{{ asset('build/images/mention2.jpg') }}" alt="Mentions Legales" style="width: 70%;">
-    </div>
-     #}
 </div>
 
 

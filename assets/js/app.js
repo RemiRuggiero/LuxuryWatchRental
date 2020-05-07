@@ -6,7 +6,7 @@ import '../css/login.scss';
 import '../css/catalogue.scss';
 import '../css/account.scss';
 import '../css/show.scss';
-import '../css/mentionsLegales.scss';
+
 
 
 
