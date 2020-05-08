@@ -32,10 +32,12 @@ class FemaleCatalogueController extends AbstractController
     {
         $watches = $request->query->get('list');
        
-        $maleWatches = $this->watchlistService->listF();
+        $femaleWatches = $this->watchlistService->listF();
+        $title = "Montres femme";
 
-        return $this->render( 'female_catalogue/femaleCatalogue.html.twig', array(
-            'watches' => $maleWatches,
+        return $this->render( 'catalogue/catalogue.html.twig', array(
+            'watches' => $femaleWatches,
+            'title' => $title
             
         ));
          

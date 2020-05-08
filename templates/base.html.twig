@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}LWR{% endblock %}</title>
 
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lux/bootstrap.min.css" rel="stylesheet" integrity="sha384-oOs/gFavzADqv3i5nCM+9CzXe3e5vXLXZ5LZ7PplpsWpTCufB7kqkTlC9FtZ5nJo" crossorigin="anonymous">
-        {{ encore_entry_link_tags('app') }}
-        {% block stylesheets %}
-        {% endblock %}
-    </head>
-    <body>
-        
-        
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Luxury Watch Rental, la location de luxe qui vous offre la possibilité de louer les marques de montres les plus prestigieuses au monde tel que Rolex, Breitling, Panerai... pour une location à court ou à long terme selon vos besoin">
+    <title>{% block title %}Luxury Watch Rental, Location de montres de luxe{% endblock %}</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('build/images/Favicon_LWR.png')}}">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;600&display=swap" rel="stylesheet">    
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lux/bootstrap.min.css" rel="stylesheet">
+    <!-- Daterangepicker -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    {{ encore_entry_link_tags('app') }}
+    {% block stylesheets %}
+    {% endblock %}
+</head>
+
+<body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="{{ path('homepage') }}">
-             <img src="{{ asset('build/images/logo.png') }}" alt="Logo de LWR">
+                <img src="{{ asset('build/images/logo.png') }}" alt="Logo de LWR">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -31,16 +38,15 @@
                         <a class="nav-link" href="{{ path('homepage') }}">Accueil</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle categories" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Catégories
+                        <a class="nav-link dropdown-toggle categories" href="#" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Catégories
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="{{ path('male_catalogue') }}">Homme</a>
-                          <a class="dropdown-item" href="{{ path('female_catalogue') }}">Femme</a>
-                        </div></li>
-                 {# <li class="nav-item">
-                        <a class="nav-link" href="#">Mon compte</span></a>
-                    </li> #}
+                            <a class="dropdown-item" href="{{ path('male_catalogue') }}">Homme</a>
+                            <a class="dropdown-item" href="{{ path('female_catalogue') }}">Femme</a>
+                        </div>
+                    </li>
                     <li class="nav-item">
 <<<<<<< HEAD
                         <a class="nav-link" href="#">Mon panier</i></a>
@@ -55,36 +61,33 @@
                     </li>
                     {% else %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle categories" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mon compte</a>
+                        <a class="nav-link dropdown-toggle categories" href="#" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mon compte</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="#">Page compte</a>
-                          <a  class="dropdown-item" href="{{ path('user_logout') }}" class="btn btn-dark">Déconnexion</a>
+                            <a class="dropdown-item" href="{{ path('account') }}">Page compte</a>
+                            <a class="dropdown-item" href="{{ path('user_logout') }}"
+                                class="btn btn-dark">Déconnexion</a>
                         </div>
-                    </li>                        
+                    </li>
                     {% endif %}
-                   
                 </ul>
-                    {# <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    </form> #}
-                
             </div>
         </nav>
-        
+
         <div class="toaster">
             {% for label, messages in app.flashes %}
-               {% for message in messages %}
-                   <div class="alert alert-{{ label }} alert-dismissible fade show">
-                       {{ message }}
-                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                           <span aria-hidden="true">&times;</span>
-                       </button>
-                   </div>
-               {% endfor %}
+            {% for message in messages %}
+            <div class="alert alert-{{ label }} alert-dismissible fade show">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             {% endfor %}
-       </div>
+            {% endfor %}
+        </div>
     </header>
-    
+
     <main>
         {% block body %}{% endblock %}
     </main>
@@ -96,10 +99,10 @@
                 <a class="nav-link" href="#">Qui sommes nous ?</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Nous contacter</a>
+                <a class="nav-link" href="{{ path('contact') }}">Nous contacter</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Condition de location et garantie</a>
+                <a class="nav-link" href="{{ path('mentions_legales') }}">Condition de location et garantie</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">FAQ</a>
@@ -116,14 +119,19 @@
     </footer>
 
 
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        {{ encore_entry_script_tags('app') }}
-        {% block javascripts %}
-        {% endblock %}
-    </body>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    {{ encore_entry_script_tags('app') }}
+    {% block javascripts %}
+    {% endblock %}
+</body>
+
 </html>
 
-{# {{ encore_entry_link_tags('app') }} #}
 
+
+{# {{ encore_entry_link_tags('app') }} #}

@@ -1,7 +1,7 @@
 easy_admin:
     design:
         brand_color: 'black'
-    site_name: '<img src="/build/images/BrandHorizontalBlack.png" height="35"> ____Manager'
+    site_name: '<img src="/build/images/BrandHorizontalBlack.png" height="35" > ____Manager'
     user:
         name_property_path: email # affichage en haut à droite de l'admin une fois la partie register faite
     entities:
@@ -79,7 +79,7 @@ easy_admin:
                     
         Location:
             class: App\Entity\Location
-            disabled_actions: ['new']
+            # disabled_actions: ['new']
             list:
                 filters: [{ property: 'ends_at', type: 'datetime' }]
                 fields:
@@ -91,10 +91,10 @@ easy_admin:
                     - { property: amount, label: 'Prix Total' }
                     - { property: is_paid, label: 'Status', type: 'toggle' }
                     - { property: bill_number, label: 'Numéro de Facture' }
-            form:
-                fields:
-                    - { property: watch_entity, label: 'Numéro de Série' }
-                    - { property: is_paid, label: 'Status' }
+            #form:
+                #fields:
+                    #- { property: watch_entity, label: 'Numéro de Série' }
+                    #- { property: is_paid, label: 'Status' }
 
         Transporteurs:
             class: App\Entity\DeliveryCompany

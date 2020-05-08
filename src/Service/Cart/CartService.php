@@ -2,7 +2,11 @@
 
 namespace App\Service\Cart;
 
+use DateTime;
 use App\Repository\WatchModelRepository;
+
+
+use App\Repository\DeliveryCompanyRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CartService
@@ -15,31 +19,41 @@ class CartService
     {
         $this->session = $session;
         $this->watchModelRepository = $watchModelRepository;
+        
     }
-    public function add(int $id)
+    public function add(int $id, $date)
     {
         $panier = $this->session->get('panier', []);
+        $d = explode(' - ', $date);
+        $startsAt = $d[0];
+        $endsAt = $d[1];
 
         if(!empty($panier[$id]))
         {
-            $panier[$id]++;
+            array_push($panier[$id], ['startsAt' => $startsAt, 'endsAt' => $endsAt
+            ]);
         } else {
-            $panier[$id] = 1;
-        }
-
+            $panier[$id] = array(['startsAt' => $startsAt, 'endsAt' => $endsAt
+            ]);
+        }           
         
-
+        // $a = count($panier[$id]);
+        // $this->session->set('a', $a);        
+        
         $this->session->set('panier', $panier);
     }
 
-    public function remove(int $id)
+    public function remove(int $id, $key)
     {
         $panier = $this->session->get('panier', []);
 
         if(!empty($panier[$id]))
         {
-            unset($panier[$id]);
+            unset($panier[$id][$key]);
         }
+       /*  if(empty($panier[$id][$key])){
+            unset($panier[$id]);
+        } */
 
         $this->session->set('panier', $panier);
     }
@@ -47,16 +61,29 @@ class CartService
     public function getFullCart() : array 
     {
         $panier = $this->session->get('panier', []);
-
         $panierWithData = [];
 
-        foreach($panier as $id => $quantity)
+        foreach($panier as $id => $watch)
         {
-            $panierWithData[] = [
-                'product' => $this->watchModelRepository->find($id),
-                'quantity' => $quantity
-            ];
-        }
+            $watchModel = $this->watchModelRepository->find($id);
+            $watchEntities = $watchModel->getWatchEntities();
+           
+            
+            foreach($watch as $date){
+                $date1 = new DateTime($date['startsAt']);
+                $date2 = $date1->diff(new DateTime($date['endsAt']));               
+                $key = array_search($date, $watch);                
+                
+                $panierWithData[] = [
+                    'product' => $watchModel,
+                    'serialNumber' => $watchEntities,
+                    'days' => $date2->days,
+                    'startsAt' => $date['startsAt'],
+                    'endsAt' => $date['endsAt'],
+                    'key' => $key,
+                    
+                ];
+        }}
 
         return $panierWithData;
     }
@@ -67,9 +94,13 @@ class CartService
 
         foreach($this->getFullCart() as $item)
         {
-            $total += $item['product']->getPrice() * $item['quantity'];
+            $total += $item['product']->getPrice() * $item['days'];
         }
 
         return $total;
     }
+
+    
+
+
 }

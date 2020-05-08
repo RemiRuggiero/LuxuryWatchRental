@@ -1,0 +1,35 @@
+
+@media(min-width: 900px){
+
+    .cart{
+
+        margin: 5em 8em;
+    
+    
+        .delivery{
+            
+            margin: 3em;
+    
+            .form-check{
+                padding-left: 2em;
+            }
+        }
+    
+    
+        
+    }
+
+
+}
+
+@media(max-width:900px){
+    .cart{
+        margin: 1em;
+
+        .form-check{
+            padding-left: 2em;
+        }
+    }
+
+
+}

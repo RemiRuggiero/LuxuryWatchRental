@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Nos Montres - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+
+<div class="maleWatch container">
+    <h1>{{ title }}</h1>
+    <div class="row">
+    {% for watch in watches %}
+    <div class="col-12 col-lg-4">
+        <div class="card watch mb-4">
+            <div class="card-body head">
+                <p class="card-title">À partir de <b>{{ watch.price }}€</b> / jour</p>                
+            </div>
+
+            {% set picture = ( watch.pictures.0.name matches '/^http/' ) ? watch.pictures.0.name : asset( 'uploads/' ~ watch.pictures.0.name ) %}
+            <a href="{{ path( 'watch_show', {id: watch.id} ) }}"><div class="card-img-top" style="background-image: url('{{ picture }}');"></div></a>
+            
+                <div class="card-body bottom">
+                    <h3 class="card-title">{{ watch.brand }}</h3>
+                    <hr>
+                    <h4 class="card-title">{{ watch.model }}</h4>
+                    <p class="card-text">{{ watch.movement }} - {{ watch.diameter }}mm - {{ watch.waterproof }}m</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+
+{% endblock %}

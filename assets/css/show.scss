@@ -1,0 +1,175 @@
+div.container{
+    // Brand
+    .h1-show{
+        font-family: 'Raleway';
+        font-weight: 300;
+        font-size: 18pt;
+        text-align: center;
+        margin-top: 0.5em;
+        margin-bottom: 0.3em;
+    }
+
+    // Watch Model
+    h2{
+        font-family: 'Raleway';
+        font-weight: 500;
+        font-size: 20pt;
+        text-align: center;
+        margin-bottom: 0.5em;
+    }
+
+    // Images
+    .w-100 {
+    width: 100% !important;
+    height: auto;
+    margin-right: auto;
+    }
+
+    // Fleches carousel
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        filter: invert(50%);
+        background-size: 15px;
+    }    
+
+    a {
+        display: flex;
+        margin : auto;
+     }
+
+    // ligne de séparation dessus carousel
+    hr{
+        margin-top: 0.1em;
+        margin-bottom: 0.5em;
+    }
+
+    // indiquer la durée...
+    .textresa{
+        font-family: 'Raleway';
+        font-weight: 600;
+        font-size: 9pt;
+        text-align: center;
+    }
+
+    // texte date de début et fin
+    .dateresa{
+        font-size: 9pt;
+        font-weight: 600;
+        margin-top: 0.7em;
+    }
+
+    // Infos prix
+    .price{
+        font-size: 9pt;
+        text-align: center;
+        margin-top: 1.5em;
+        margin-bottom: 0;
+    }    
+
+    // Bouton "louer Maintenant"
+    a.btn.btn-dark{
+        font-family: 'Raleway';
+        font-weight: 500;
+        font-size: 9pt;
+        color: white!important;
+        display: table;
+        background-color:rgb(5, 5, 5);
+        padding:1em;  
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        margin-top: 0.2em;
+        margin-bottom: 1.5em; 
+    }
+
+    // Tableau des caractéristiques
+    .caract{
+        font-family: 'Raleway';
+        font-weight: 600;
+        font-size: 12pt;
+        margin-bottom: 0em;
+    }
+
+    th{
+        font-family: 'Raleway';
+        font-weight: 600;
+        font-size: 9pt;
+    }
+
+    td{
+        font-family: 'Raleway';
+        font-weight: 400;
+        font-size: 9pt;
+    }
+
+    .low{
+        margin-top: 1em;
+        margin-bottom: 2em;
+    }
+}
+
+// Gestion du Responsive
+@media only screen and ( min-width: 992px){
+    div.container{
+        // Brand
+        h1{
+            font-size: 23pt;
+            margin-bottom: 0.5em;
+        }
+    
+        // Watch Model
+        h2{
+            font-size: 25pt;
+        }
+    
+        // Images
+        .w-100 {
+        width: 60% !important;
+        height: auto;
+        margin: auto
+    }
+    
+        // Fleches carousel
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            filter: invert(50%);
+            background-size: 20px;
+        }
+        
+        // favicons panier & favoris
+        .cardNav{
+        font-size: 9pt;
+        margin-bottom: 0.5em;        
+        }
+
+        // indiquer la durée...
+        .textresa{
+            font-size: 11pt;
+        }
+    
+        // texte date de début et fin
+        .dateresa{
+            font-size: 10pt;
+        }
+    
+        // Infos prix
+        .price{
+            font-size: 12pt;
+        }    
+    
+        // Bouton "louer Maintenant"
+        a.btn.btn-dark{
+            font-size: 12pt; 
+        }
+
+        // Tableau des caractéristiques
+        .caract{
+            font-size: 14pt;
+        }
+    
+        th{
+            font-size: 10pt;
+        }
+    
+        td{
+            font-size: 10pt;
+        }
+    }
+}

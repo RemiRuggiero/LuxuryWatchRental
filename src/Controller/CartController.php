@@ -3,25 +3,40 @@
 namespace App\Controller;
 
 use App\Service\Cart\CartService;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+use App\Controller\OneWatchController;
+use Symfony\Component\Routing\Annotation\Route;
+use App\Service\DeliveryCompany\DeliveryCompanyService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CartController extends AbstractController
 {
+    private $deliveryCompanyService;
+    public function __construct( DeliveryCompanyService $deliveryCompanyService)
+    {
+        $this->DeliveryCompanyService = $deliveryCompanyService;
+    }
 
 
     /**
      * @Route("/panier", name="cart_index")
      * 
      */
-    public function index(CartService $cartService)
+    public function index(CartService $cartService, SessionInterface $session, Request $request)
     {
-        // $session->clear();
+         
+        //$session->clear();
+        var_dump($session->get('a'));
+        echo '<pre>' ;
+        var_dump($session->get('panier'));
+        echo '</pre>' ;
     
-        return $this->render('cart/index.html.twig', [
+        return $this->render('cart/cart.html.twig', [
             'items' => $cartService->getFullCart(),
-            'total' => $cartService->getTotal()
+            'total' => $cartService->getTotal(),
+            'companies' => $this->DeliveryCompanyService->getDeliveryCompany()
         ]);
         
     }
@@ -30,20 +45,26 @@ class CartController extends AbstractController
     /**
      * @Route("/panier/add/{id}", name="cart_add")
      */
-    public function add($id, CartService $cartService)
+    public function add($id, CartService $cartService, SessionInterface $session, Request $request )
     {
-        $cartService->add($id);
+        $date = $request->request->get('daterange');
 
-        return $this->redirectToRoute("cart_index");
+        $session->set('date', $date ); 
+        $cartService->add($id, $date);
+    
+
+       return $this->redirectToRoute("cart_index");
     }
 
     /**
-     * @Route("/panier/remove/{id}", name="cart_remove")
+     * @Route("/panier/remove/{id}/{key}", name="cart_remove")
      */
-    public function remove($id, CartService $cartService)
+    public function remove($id, $key, CartService $cartService)
     {
-        $cartService->remove($id);
+        $cartService->remove($id, $key);
 
         return $this->redirectToRoute('cart_index');
     }
+
+     
 }
