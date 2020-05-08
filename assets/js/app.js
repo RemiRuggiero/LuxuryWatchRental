@@ -42,7 +42,7 @@ $(function() {
 
   $('input[name="daterange"]').daterangepicker({
     opens: 'right',
-    minDate: new Date(currentYear, currentMonth, currentDate),
+    minDate: new Date(currentYear, currentMonth, currentDate +3),
     isInvalidDate: function(date){
       if(disabledDate.length == 0){
         true

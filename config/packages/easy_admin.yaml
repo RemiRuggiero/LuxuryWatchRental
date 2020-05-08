@@ -1,5 +1,14 @@
 easy_admin:
     design:
+        menu:
+            - { label: 'Accueil du site', icon: 'home',  route: 'homepage' }
+           
+            - { entity: Utilisateurs, icon: "users" }
+            - { entity: Montres, icon: "clock" }
+            - { entity: Location, icon: "tags" }
+            - { entity: Transporteurs, icon: "truck" }
+            - { entity: Livraison, icon: "dolly" }
+
         brand_color: 'black'
     site_name: '<img src="/build/images/BrandHorizontalBlack.png" height="35" > ____Manager'
     user:
@@ -8,6 +17,9 @@ easy_admin:
         Utilisateurs:
             class: App\Entity\User
             list:
+                actions:
+                    - { name: 'edit', icon: 'edit', label: false, css_class: 'btn-secondary text-dark' }
+                    - { name: 'delete', icon: 'trash', label: false, css_class: 'btn-secondary text-danger' }
                 fields:
                     - { property: 'firstname', label: 'Prénom' }
                     - { property: lastname, label: 'Nom' }                    
@@ -18,7 +30,8 @@ easy_admin:
                     - { property: zipcode, label: 'Code Postal' }
                     - { property: country, label: 'Pays' }
                     - { property: phone_number, label: 'Téléphone' }
-                    - { property: 'birthday', label: 'Date de Naissance' }
+                    - { property: 'birthday', label: 'Date de Naissance' }                
+                    
             form:
                 fields: 
                     - { property: firstname, label: 'Prénom' }
@@ -41,6 +54,9 @@ easy_admin:
         Montres:
             class: App\Entity\WatchModel
             list:
+                actions:
+                    - { name: 'edit', icon: 'edit', label: false, css_class: 'btn-secondary text-dark' }
+                    - { name: 'delete', icon: 'trash', label: false, css_class: 'btn-secondary text-danger' }
                 fields:
                     - { property: brand, label: 'Marque' }
                     - { property: model, label: 'Modèle' }
@@ -81,6 +97,9 @@ easy_admin:
             class: App\Entity\Location
             # disabled_actions: ['new']
             list:
+                actions:
+                    - { name: 'edit', icon: 'edit', label: false, css_class: 'btn-secondary text-dark' }
+                    - { name: 'delete', icon: 'trash', label: false, css_class: 'btn-secondary text-danger' }
                 filters: [{ property: 'ends_at', type: 'datetime' }]
                 fields:
                     - { property: watch_entity, label: 'Numéro de Série' }
@@ -100,6 +119,9 @@ easy_admin:
             class: App\Entity\DeliveryCompany
             disabled_actions: ['edit']
             list:
+                actions:
+                    - { name: 'edit', icon: 'edit', label: false, css_class: 'btn-secondary text-dark' }
+                    - { name: 'delete', icon: 'trash', label: false, css_class: 'btn-secondary text-danger' }
                 fields:
                     - { property: name, label: 'Nom' }
                     - logo
@@ -115,6 +137,9 @@ easy_admin:
             class: App\Entity\Delivery
             disabled_actions: ['new']
             list:
+                actions:
+                    - { name: 'edit', icon: 'edit', label: false, css_class: 'btn-secondary text-dark' }
+                    - { name: 'delete', icon: 'trash', label: false, css_class: 'btn-secondary text-danger' }
                 fields:
                     - { property: delivery_company, label: 'Transporteur' }
                     - { property: tracking_number, label: 'Numéro de suivi' }

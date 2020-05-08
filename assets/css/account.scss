@@ -4,21 +4,53 @@ p{
 }
 
 .account {
-    h1{
+
+    .titleadmin{
         margin-top: 1em;
+        color: rgb(192, 190, 190);
+        font-size: 14pt;
+        font-weight: 400;        
     }
-        font-family: "Raleway";
-        font-weight: 400;
+
+    .welcomeadmin{
+        display: flex;
+        display: inline-flex;
+    
+    .titleadmin{
+        margin-top: 1em;
+        color: rgb(192, 190, 190);
+        font-size: 14pt;
+        font-weight: 400;        
+    }
+
+    a{
+        text-decoration: none;
+                
+        :hover{
+            color: black;
+        }
+    }
+    .admin{
+        font-size: 12pt;
+        margin-left: 0.5em;
+        margin-top: 0.5em;
+        color: rgb(192, 190, 190);   
+    }
+
+    }
+        
 }
 
 
-@media only screen and (max-width: 350px){
+ @media only screen and (max-width: 350px){
     .account{
-        h1{
-            font-size: 20pt;
+        
+        .titleadmin{
+            font-size: 10pt;
         }
+
         h2{
             font-size: 17pt;
         }
     }
-}
+} 

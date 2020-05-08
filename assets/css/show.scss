@@ -42,6 +42,11 @@ div.container{
         margin-bottom: 0.5em;
     }
 
+    // ligne de séparation sous le carousel
+    hr.souscarousel{
+        margin-top: 1em;
+    }
+
     // indiquer la durée...
     .textresa{
         font-family: 'Raleway';
@@ -49,6 +54,34 @@ div.container{
         font-size: 9pt;
         text-align: center;
     }
+
+    // DateRangePicker
+    form{
+        font-family: 'Raleway';
+        font-weight: 400;
+        text-align: center;
+
+        // input DateRange
+    input#daterange{
+        border-radius: 2em;
+        width: 211px;
+        padding: 0.3em;
+        padding-left: 1.5em;
+        border-style: none;
+        background-color: #eeeeee;
+    }
+
+        // btn VALIDER
+    .validate{
+        
+        border-radius: 1em;
+        width: 100px;
+        height: 27px;
+        background-color: black;
+        color: white;
+        border-style: none;
+    }
+    }    
 
     // texte date de début et fin
     .dateresa{
@@ -62,7 +95,7 @@ div.container{
         font-size: 9pt;
         text-align: center;
         margin-top: 1.5em;
-        margin-bottom: 0;
+        margin-bottom: 1.5em;
     }    
 
     // Bouton "louer Maintenant"
@@ -81,29 +114,57 @@ div.container{
     }
 
     // Tableau des caractéristiques
-    .caract{
-        font-family: 'Raleway';
-        font-weight: 600;
-        font-size: 12pt;
-        margin-bottom: 0em;
-    }
+    .accordion{
 
-    th{
-        font-family: 'Raleway';
-        font-weight: 600;
-        font-size: 9pt;
-    }
+        .onglets{
+            font-size: 18pt;
+        }
 
-    td{
-        font-family: 'Raleway';
-        font-weight: 400;
-        font-size: 9pt;
-    }
+        .btn-link{
+            text-decoration: none;
+        }
 
-    .low{
-        margin-top: 1em;
-        margin-bottom: 2em;
-    }
+        .card-body{
+            text-align: center;
+        }
+
+        .card-header{
+            padding: 0em;
+        }
+
+        .backgroundCaract{
+            background-color: white;
+        }
+
+        .caract{
+            font-family: 'Raleway';
+            font-weight: 600;
+            font-size: 12pt;
+            margin-bottom: 0em;
+        }
+
+        th{
+            font-family: 'Raleway';
+            font-weight: 600;
+            font-size: 9pt;
+        }
+
+        td{
+            font-family: 'Raleway';
+            font-weight: 400;
+            font-size: 9pt;
+        }
+
+        .low{
+            margin-top: 1em;
+            margin-bottom: 2em;
+        }
+
+        .linebottom{
+            margin-bottom: 1.5em;
+            visibility: hidden;
+        }
+}
 }
 
 // Gestion du Responsive
@@ -173,3 +234,15 @@ div.container{
         }
     }
 }
+
+@media only screen and ( max-width: 345px){ 
+
+    div.container{
+    
+            // btn VALIDER
+        .validate{
+            margin-top: 0.5em;
+        }}
+    }
+       
+    
