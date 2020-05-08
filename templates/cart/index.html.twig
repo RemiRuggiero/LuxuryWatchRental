@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 {% for item in items %}
-                
+                {{ dump(items)}}
                     <tr>
                         <td>{{ item.product.brand }}</td>
                         <td>{{ item.product.price }}</td>
