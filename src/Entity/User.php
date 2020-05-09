@@ -8,13 +8,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
 
 
 /**
- * @UniqueEntity("email", message = "Cette adresse email est déjà utilisée")
+ * @UniqueEntity("email", message = "Cette adresse email est déjà utilisée", groups={"registration"})
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -60,26 +61,55 @@ class User implements UserInterface
     private $gender;
 
     /**
+     * @Assert\NotBlank( message = "Vous devez saisir votre numéro de téléphone" )
+     *@Assert\Length(
+     *      min = 2,
+     *      max = 45,
+     *      minMessage = "Le numéro de téléphone doit comporter au minimum {{ limit }} caractères",
+     *      maxMessage = "Le numéro de téléphone doit comporter au maximum {{ limit }} caractères",
+     * )
      * @ORM\Column(type="string", length=45, nullable=true)
      */
     private $phone_number;
 
     /**
+     * @Assert\NotBlank( message = "Vous devez saisir votre adresse postale" )
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "L'adresse doit comporter au minimum {{ limit }} caractères",
+     *      maxMessage = "L'adresse doit comporter au maximum {{ limit }} caractères",
+     * )
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $address;
 
     /**
+     * @Assert\NotBlank( message = "Vous devez saisir votre ville" )
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "La ville doit comporter au minimum {{ limit }} caractères",
+     *      maxMessage = "La ville nom doit comporter au maximum {{ limit }} caractères",
+     * )
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $town;
 
     /**
+     * @Assert\NotBlank( message = "Vous devez saisir votre code postal" )
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "Le code postale doit comporter au minimum {{ limit }} caractères",
+     *      maxMessage = "Le code postale doit comporter au maximum {{ limit }} caractères",
+     * )
      * @ORM\Column(type="string", length=45, nullable=true)
      */
     private $zipcode;
 
     /**
+     * @Assert\NotBlank( message = "Vous devez saisir votre pays" )
      * @ORM\Column(type="string", length=45, nullable=true)
      */
     private $country;
@@ -139,6 +169,17 @@ class User implements UserInterface
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $enable;
+
+    /**
+     *  @Assert\NotBlank( message = "Vous devez ajouter votre carte d'identité " )
+      * @Assert\File(
+      *     maxSize = "2M",
+      *     maxSizeMessage = "Votre fichier est trop lourd, il ne doit pas dépasser {{ limit }}{{ suffix }}",
+      *     mimeTypes = {"image/png", "image/jpeg" , "application/pdf"},
+      *     mimeTypesMessage = "Seules les fichiers PNG, JPEG et PDF sont autorisées",
+      * )
+     */
+    private $cardFile;
 
     public function __construct()
     {
@@ -400,6 +441,29 @@ class User implements UserInterface
         $this->enable = $enable;
 
         return $this;
+    }
+
+    public function getCardFile(): ?File
+    {
+        return $this->cardFile;
+    }
+
+    public function setCardFile(File $cardFile): self
+    {
+        $this->cardFile = $cardFile;
+
+        return $this;
+    }
+
+    public function serialize()
+    {
+        return serialize(array( $this->id, $this->email, $this->password));
+    }
+
+    public function unserialize($serialized)
+    {
+        list ( $this->id, $this->email, $this->password) = unserialize($serialized, array('allowed_classes' => false));
+
     }
 
 }
