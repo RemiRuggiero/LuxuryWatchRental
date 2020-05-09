@@ -1,21 +1,39 @@
-#login{
+#login {
     font-family: 'Raleway';
-        h1{
-        font-weight: 400;
+
+    // CONNEXION
+    h1 {
+        font-weight: 600;
         text-align: center;
+        padding: 0.2em;
+        text-align: start;
+    }
+
+    // Champs
+    .form-group {
+        text-align: initial;
+    }
+
+    // Bouton
+    .btn-primary {
+        display: block;
+    }
+
+    // CSS Vous n'avez pas de compte ? Mdp oublié ?
+    .register-you {
+
+        padding-top: 1em;
+        display: flex;
+        font-family: 'Raleway';
+        font-weight: 600;
+        font-size: 14px;
+        color: black;
+    }
+
+    .forgot {
+        font-family: 'Raleway';
+        font-weight: 600;
+        font-size: 14px;
+        color: black;
+    }
 }
-        .register-you{          // CSS Vous n'avez pas de compte ? Mdp oublié ?
-            
-            padding-top: 1em;
-            display: flex;
-            font-family: 'Raleway';
-            font-weight: 600;
-            font-size: 14px;
-            color: black;
-}
-}
-
-
-
-
-

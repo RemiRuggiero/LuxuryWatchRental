@@ -2,21 +2,19 @@
 
 {% block title %}Inscription - {{ parent() }}{% endblock %}
 
-
 {% block body %}
-
 <div class="register">
     {{ form_start( form, {
         'attr': {
             'class': 'container-fluid my-2',
             'novalidate': 'novalidate',
         }
-    } ) }}    
+    } ) }}
 
     <div class="row my-2">
-        
+
         <div class="col-lg-6">
-            <h1>Créer un compte</h1>            
+            <h1>Créer un compte</h1>
             {{ form_row( form.lastname ) }}
             {{ form_row( form.firstname ) }}
             {{ form_row( form.email ) }}
@@ -26,9 +24,6 @@
             <button type="submit" class="btn btn-primary ">S'inscrire</button>
         </div>
     </div>
-
     {{ form_end( form ) }}
-
 </div>
-   
 {% endblock %}

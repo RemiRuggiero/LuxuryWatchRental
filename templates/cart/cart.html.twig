@@ -1,97 +1,64 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!
-{% endblock %}
+{% block title %}Mon Panier - {{ parent() }}{% endblock %}
 
 {% block body %}
 
-<div class="cart">
+<div class="container">
 
-
-    <div class="mb-2">
-        <h1>Votre panier</h1>
+    <div class="mb-2 title">
+        <h1>MON PANIER</h1>
     </div>
 
     {% if items | length > 0 %}
 
-    <div class="table-responsive-md">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Marque</th>
-                    <th scope="col">Modèle</th>
-                    <th scope="col">Prix</th>
-                    <th scope="col">Caution</th>
-                    <th scope="col">Début de location</th>
-                    <th scope="col">Fin de location</th>
+    {% for item in items %}
 
-                    <th scope="col">Total</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                {#{{ dump(items)}}#}
-                {% for item in items %}
+    <!-- Récapitulatif de la commande -->
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"> MARQUE : {{ item.product.brand }}</li>
+        <li class="list-group-item recap"> MODÈLE : {{ item.product.model }}</li>
+        <li class="list-group-item"> PRIX : {{ item.product.price }} €</li>
+        <li class="list-group-item recap"> CAUTION : {{ item.product.deposit }} €</li>
+        <li class="list-group-item"> DÉBUT DE LOCATION : {{ date(item.startsAt)|date('d/m/Y') }}</li>
+        <li class="list-group-item recap"> FIN DE LOCATION : {{ date(item.endsAt)|date('d/m/Y') }}</li>
+        <li class="list-group-item"> TOTAL : {{ item.product.price * item.days }} €</li>
+        <!-- Bouton de suppression -->
+        <td>
+            <a href="{{ path('cart_remove', {'id': item.product.id, 'key': item.key}) }}" class="btn btn-danger btn-sm"
+                id="trashbox">
+                <i class="fas fa-trash"></i>
+            </a>
+        </td>
+    </ul>
+    {% endfor %}
 
-                <tr>
-                    <td>{{ item.product.brand }}</td>
-                    <td>{{ item.product.model }}</td>
-                    <td>{{ item.product.price }} €</td>
-                    <td>{{ item.product.deposit }} €</td>
-                    <td>{{ date(item.startsAt)|date('d/m/Y') }}</td>
-                    <td>{{ date(item.endsAt)|date('d/m/Y') }}</td>
-
-                    <td>{{ item.product.price * item.days }} €</td>
-                    <td>
-                        <a href="{{ path('cart_remove', {'id': item.product.id, 'key': item.key}) }}"
-                            class="btn btn-danger btn-sm">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="6" class="text-right">Total : </td>
-                    <td>{{ total }} €</td>
-                </tr>
-            </tfoot>
-        </table>
-
-    </div>
-
-    <form method="POST" class="delivery">
-        <p>Choix de la livraison</p>
+    <!-- Choix de livraison -->
+    <form method="POST">
+        <p class="deliverychoice">Choix de la livraison</p>
         {% for delivery in companies %}
-        <div class="form-check form-control mb-2 col-6">
-            <input class="form-check-input" type="radio" name="delivery" id="delivery" value="{{delivery.id}}"
-                checked>
+        <div class="form-check form-control mb-2 col-7" id="deliverycompanychoice">
+            <input class="form-check-input" type="radio" name="delivery" id="delivery" value="{{delivery.id}}" checked>
             <label class="form-check-label" for="delivery">
                 {{delivery.name}}
             </label>
         </div>
         {% endfor %}
-        <a
-        {% if app.user is empty %}
-        href="{{ path('user_login') }}"
-        {% else %}
-        href="{{ path('pre_pay') }}"
-        {% endif %}
-        
-        
-        class="btn btn-success mt-3">Valider</a>
+
+        <!-- Prix total -->
+        <tr>
+            <td colspan="6" class="total">TOTAL : </td>
+            <td>{{ total }} €</td>
+        </tr>
+
+        <!-- Bouton Validation de commande -->
+        <a {% if app.user is empty %} href="{{ path('user_login') }}" {% else %} href="{{ path('pre_pay') }}"
+            {% endif %} class="btn btn-success mt-2 mb-5" id="validate">Valider</a>
     </form>
 
+    <!-- Affichage si le panier est vide -->
     {% else %}
     <p>Votre panier est vide !</p>
-
     {% endif %}
-
-
-
 </div>
-
-
-
 {% endblock %}

@@ -8,6 +8,7 @@ import '../css/account.scss';
 import '../css/show.scss';
 import '../css/contact.scss';
 import '../css/cart.scss';
+import '../css/forgotten_password.scss';
 
 
 
