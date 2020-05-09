@@ -19,7 +19,7 @@ class Delivery
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="string", length=45, nullable = true)
      */
     private $tracking_number;
 
@@ -44,7 +44,7 @@ class Delivery
     private $country;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable = true)
      */
     private $returned_at;
 
