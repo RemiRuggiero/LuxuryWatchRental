@@ -27,21 +27,12 @@ class CartController extends AbstractController
     public function index(CartService $cartService, SessionInterface $session, Request $request)
     {
          
-        // $session->clear();
-        /* $date = $session->get('date');
-        $d = explode(' - ', $date);
-        $startsAt = $d[0];
-        $endsAt = $d[1];
-        var_dump($startsAt);
-        var_dump($endsAt); */
+        //$session->clear();
         var_dump($session->get('a'));
         echo '<pre>' ;
         var_dump($session->get('panier'));
         echo '</pre>' ;
-        //dd($cartService->getFullCart());
-        
-
-        //dd($cartService->getFullCart());
+    
         return $this->render('cart/cart.html.twig', [
             'items' => $cartService->getFullCart(),
             'total' => $cartService->getTotal(),
@@ -74,6 +65,5 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute('cart_index');
     }
-
-     
+    
 }

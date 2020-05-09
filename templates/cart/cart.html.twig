@@ -4,81 +4,94 @@
 {% endblock %}
 
 {% block body %}
-    <div class="bg-light p-3">
+
+<div class="cart">
+
+
+    <div class="mb-2">
         <h1>Votre panier</h1>
     </div>
-    
+
     {% if items | length > 0 %}
-    
+
+    <div class="table-responsive-md">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Produit</th>
-                    <th>Prix</th>
-                    
-                    <th>Total</th>
-                    <th></th>
+                    <th scope="col">Marque</th>
+                    <th scope="col">Modèle</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Caution</th>
+                    <th scope="col">Début de location</th>
+                    <th scope="col">Fin de location</th>
+
+                    <th scope="col">Total</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                {{ dump(items)}}
+                {#{{ dump(items)}}#}
                 {% for item in items %}
-                
-               
-                
-                    <tr>
-                        <td>{{ item.product.brand }}</td>
-                        <td>{{ item.product.price }}</td>
-                        
-                        <td>{{ item.product.price * item.days }}</td>
-                        <td>
-                            <a href="{{ path('cart_remove', {'id': item.product.id, 'key': item.key}) }}" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
+
+                <tr>
+                    <td>{{ item.product.brand }}</td>
+                    <td>{{ item.product.model }}</td>
+                    <td>{{ item.product.price }} €</td>
+                    <td>{{ item.product.deposit }} €</td>
+                    <td>{{ date(item.startsAt)|date('d/m/Y') }}</td>
+                    <td>{{ date(item.endsAt)|date('d/m/Y') }}</td>
+
+                    <td>{{ item.product.price * item.days }} €</td>
+                    <td>
+                        <a href="{{ path('cart_remove', {'id': item.product.id, 'key': item.key}) }}"
+                            class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
                 {% endfor %}
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3" class="text-right">Total : </td>
-                    <td>{{ total }}</td>
-                    <td>
-                        <a href="{{ path('user_login') }}" class="btn btn-danger btn-sm">Valider</a>
-                    </td>
+                    <td colspan="6" class="text-right">Total : </td>
+                    <td>{{ total }} €</td>
                 </tr>
             </tfoot>
         </table>
-    {% else %}
-        <p>Votre panier est vide !</p>
-        
-    {% endif %}
-        
-            
-    <!-- <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-        <label class="form-check-label" for="inlineRadio1">UPS</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-        <label class="form-check-label" for="inlineRadio2">La Poste</label>
-      </div> -->
-        
-     <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Livraison</label>
-        </div>
-        <select class="custom-select" id="inputGroupSelect01">
-            {% for company in companies %}
-            <option value="1">{{ company.name }}</option>
-                
-            {% endfor %}
-          
-          
-          
-        </select>
-      </div> 
 
-      
+    </div>
+
+    <form method="POST" class="delivery">
+        <p>Choix de la livraison</p>
+        {% for delivery in companies %}
+        <div class="form-check form-control mb-2 col-6">
+            <input class="form-check-input" type="radio" name="delivery" id="delivery" value="{{delivery.id}}"
+                checked>
+            <label class="form-check-label" for="delivery">
+                {{delivery.name}}
+            </label>
+        </div>
+        {% endfor %}
+        <a
+        {% if app.user is empty %}
+        href="{{ path('user_login') }}"
+        {% else %}
+        href="{{ path('pre_pay') }}"
+        {% endif %}
+        
+        
+        class="btn btn-success mt-3">Valider</a>
+    </form>
+
+    {% else %}
+    <p>Votre panier est vide !</p>
+
+    {% endif %}
+
+
+
+</div>
+
+
 
 {% endblock %}

@@ -7,11 +7,16 @@ import '../css/catalogue.scss';
 import '../css/account.scss';
 import '../css/show.scss';
 import '../css/contact.scss';
+import '../css/cart.scss';
+import '../css/transition.scss';
 
 
 
 
 // Transition de page
+// import Swup from 'swup';
+
+// const swup = new Swup();
 
 // Page: "show.html.twig" -> Gestion transition image du carousel
 $('.carousel').carousel({
@@ -41,7 +46,7 @@ $(function() {
 
   $('input[name="daterange"]').daterangepicker({
     opens: 'right',
-    minDate: new Date(currentYear, currentMonth, currentDate),
+    minDate: new Date(currentYear, currentMonth, currentDate +3),
     isInvalidDate: function(date){
       if(disabledDate.length == 0){
         true
@@ -64,9 +69,5 @@ $(function() {
   }
   console.log(recupvariable); */
 
-  
-  
-  
-  
-
 });
+

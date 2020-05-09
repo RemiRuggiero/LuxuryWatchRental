@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement - {{ parent() }}{% endblock %}
+{% block body %}
+<div class="register">
+    {{ form_start( form, {
+        'attr': {
+            'class': 'container-fluid my-2',
+            'novalidate': 'novalidate',
+        }
+    } ) }}
+
+    
+
+    <div class="row my-2">
+        
+        <div class="col-lg-6">
+            <h1>Informations de livraison</h1>
+            
+            {{ form_row( form.gender ) }}
+            {{ form_row( form.lastname ) }}
+            {{ form_row( form.firstname ) }}
+            {{ form_row( form.email ) }}
+            {{ form_row( form.phone_number ) }}
+            {{ form_row( form.address ) }}
+            {{ form_row( form.town ) }}
+            {{ form_row( form.zipcode ) }}
+            {{ form_row( form.country ) }}
+            {{ form_row( form.cardFile ) }}
+            
+
+            <button type="submit" class="btn btn-primary ">Valider</button>
+        </div>
+    </div>
+
+    {{ form_end( form ) }}
+    {% endblock %}
