@@ -27,6 +27,11 @@ class WatchEntity
      */
     private $watch_model;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $available;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +64,18 @@ class WatchEntity
     public function __toString()
     {
         return $this->serial_number;
+    }
+
+    public function getAvailable(): ?bool
+    {
+        return $this->available;
+    }
+
+    public function setAvailable(bool $available): self
+    {
+        $this->available = $available;
+
+        return $this;
     }
 
 }

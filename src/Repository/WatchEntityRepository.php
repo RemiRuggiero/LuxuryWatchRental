@@ -19,6 +19,21 @@ class WatchEntityRepository extends ServiceEntityRepository
         parent::__construct($registry, WatchEntity::class);
     }
 
+    public function findByAvailable($id)
+    {
+        $stmt = $this->createQueryBuilder('w');
+        $stmt->where('w.id = :id')->andWhere('w.available IS NOT NULL');
+        $stmt->setParameter('id', $id);
+        $stmt->setMaxResults(1);
+        if($stmt->getQuery()->getSingleResult()){
+            return $stmt->getQuery()->getSingleResult();
+        }
+        else{
+            return 'not ok';
+        }
+        
+    }
+
     // /**
     //  * @return WatchEntity[] Returns an array of WatchEntity objects
     //  */
