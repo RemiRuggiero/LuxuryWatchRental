@@ -5,142 +5,181 @@
 {% block body %}
 <div class="container">
 
-    <!-- Nom & Modèle de la montre -->
-    <h1 class="h1-show">{{ watch.brand }}</h1> 
-    <hr>       
-    <h2>{{ watch.model }}</h2>
+  <!-- Nom & Modèle de la montre -->
+  <h1 class="h1-show">{{ watch.brand }}</h1>
+  <hr>
+  <h2>{{ watch.model }}</h2>
 
-    <!-- Carousel -->
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
+  <!-- Carousel -->
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
 
-          <div class="carousel-item active">
-            {% set picture = ( watch.pictures.0.name matches '/^http/' ) ? watch.pictures.0.name : asset( 'uploads/' ~ watch.pictures.0.name ) %}
-            <img src="{{ picture }}" class="d-block w-100" alt="visuel montre 1">
-          </div>
-          
-          {% if watch.pictures.1.name is defined %}
-          <div class="carousel-item">          
-            {% set picture = ( watch.pictures.1.name matches '/^http/' ) ? watch.pictures.1.name : asset( 'uploads/' ~ watch.pictures.1.name ) %}
-            <img src="{{ picture }}" class="d-block w-100" alt="Visuel montre 2">
-          </div>
-          {% endif %}
-
-          {% if watch.pictures.2.name is defined %}
-          <div class="carousel-item">          
-            {% set picture = ( watch.pictures.2.name matches '/^http/' ) ? watch.pictures.2.name : asset( 'uploads/' ~ watch.pictures.2.name ) %}
-            <img src="{{ picture }}" class="d-block w-100" alt="Visuel montre 3">
-          </div>
-          {% endif %}
-
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="false"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="false"></span>
-          <span class="sr-only">Next</span>
-        </a>
+      <div class="carousel-item active">
+        {% set picture = ( watch.pictures.0.name matches '/^http/' ) ? watch.pictures.0.name : asset( 'uploads/' ~ watch.pictures.0.name ) %}
+        <img src="{{ picture }}" class="d-block w-100" alt="visuel montre 1">
       </div>
 
-    <hr class="souscarousel">
+      {% if watch.pictures.1.name is defined %}
+      <div class="carousel-item">
+        {% set picture = ( watch.pictures.1.name matches '/^http/' ) ? watch.pictures.1.name : asset( 'uploads/' ~ watch.pictures.1.name ) %}
+        <img src="{{ picture }}" class="d-block w-100" alt="Visuel montre 2">
+      </div>
+      {% endif %}
 
-    <!-- Calendrier, infos & Bouton "ajouter au panier" -->
-    <p class="textresa">INDIQUER LA DURÉE DE RÉSERVATION SOUHAITÉE</p>
+      {% if watch.pictures.2.name is defined %}
+      <div class="carousel-item">
+        {% set picture = ( watch.pictures.2.name matches '/^http/' ) ? watch.pictures.2.name : asset( 'uploads/' ~ watch.pictures.2.name ) %}
+        <img src="{{ picture }}" class="d-block w-100" alt="Visuel montre 3">
+      </div>
+      {% endif %}
 
-    {#  {% for item in items %}
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="false"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <hr class="souscarousel">
+
+  <!-- Calendrier, infos & Bouton "ajouter au panier" -->
+  <p class="textresa">INDIQUER LA DURÉE DE RÉSERVATION SOUHAITÉE</p>
+
+  {#  {% for item in items %}
         {% if item.stock == 0 %}
         <p>pas de stock</p>
       {% endif %}
       {% else %} #}
-      <input type="hidden" id="catchDate" name="catchDate" value="{{ jsonArray }}">
-      <form name="dateform" action="{{ path('cart_add', {'id': watch.id}) }}" method="POST">
-        <input id='daterange' type="dd/MMMM/y" name="daterange" value="01/01/2018 - 01/15/2018" />
-        <button type="submit" name="ok" value="ok" class="btn-link">VALIDER</button>
-      </form>
+  <input type="hidden" id="catchDate" name="catchDate" value="{{ jsonArray }}">
+  <form name="dateform" action="{{ path('cart_add', {'id': watch.id}) }}" method="POST">
+    <input id='daterange' type="dd/MMMM/y" name="daterange" value="01/01/2018 - 01/15/2018" />
+    <button type="submit" name="ok" value="ok" class="btn-link validate">VALIDER</button>
+  </form>
 
-     {# {% endfor %} #}
-    
-    <!-- Caractéristiques produit -->
-    <p class="price">à partir de <b>{{ watch.price }}€</b> / jour</p>
-    
-   
-    <p class="caract">CARACTÉRISTIQUES</p>
-    <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">MARQUE</th>
-            <td>{{ watch.brand }}</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="col">RÉFÉRENCE</th>
-            <td>{{ watch.model }}</td>
-          </tr>        
-        </tbody>
-        <thead>
-          <tr>
-            <th scope="col">GENRE</th>
-            <td>{{ watch.gender }}</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="col">MOUVEMENT</th>
-            <td>{{ watch.movement }}</td>
-          </tr>        
-        </tbody>
-        <thead>
-          <tr>
-            <th scope="col">DIAMÈTRE</th>
-            <td>{{ watch.diameter }}mm</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="col">ETANCHÉITÉ</th>
-            <td>{{ watch.waterproof }}m</td>
-          </tr>        
-        </tbody>
-        <thead>
-          <tr>
-            <th scope="col">VERRE</th>
-            <td>{{ watch.glass }}</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="col">FONCTIONS</th>
-            <td>{{ watch.function }}</td>
-          </tr>        
-        </tbody>
-        <thead>
-          <tr>
-            <th scope="col">BOITIER</th>
-            <td>{{ watch.watchDial }}</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="col">BRACELET</th>
-            <td>{{ watch.bracelet }}</td>
-          </tr>        
-        </tbody>
-        <thead>
-          <tr>
-            <th scope="col">FERMOIR</th>
-            <td>{{ watch.watchClasps }}</td>
-          </tr>
-          <tbody>
-          <tr>
-            <th scope="col">DISPONIBILITÉ</th>
-            <td>En Stock</td>
-          </tr>        
-        </tbody>
-        </thead>      
-  </table>
-  <hr class="low">
-</div>      
-{% endblock %}
+  {# {% endfor %} #}
+
+  <!-- Caractéristiques produit -->
+  <p class="price">à partir de <b>{{ watch.price }}€</b> / jour</p>
+
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link onglets" type="button" data-toggle="collapse" data-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            DESCRIPTION
+          </button>
+        </h2>
+      </div>
+
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          {{ watch.description }}
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header wesh" id="headingTwo">
+        <h2 class="mb-0 backgroundCaract">
+          <button class="btn btn-link collapsed onglets" type="button" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="false" aria-controls="collapseTwo">
+            CARACTÉRISTIQUES
+          </button>
+        </h2>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body2">
+          <!-- <p class="caract">CARACTÉRISTIQUES</p> -->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">MARQUE</th>
+                <td>{{ watch.brand }}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="col">RÉFÉRENCE</th>
+                <td>{{ watch.model }}</td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th scope="col">GENRE</th>
+                {% if watch.gender == 0 %}
+                <td>Femme</td>
+                {% elseif watch.gender == 1 %}
+                <td>Homme</td>
+                {% else %}
+                <td>Unisexe</td>
+                {% endif %}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="col">MOUVEMENT</th>
+                <td>{{ watch.movement }}</td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th scope="col">DIAMÈTRE</th>
+                <td>{{ watch.diameter }}mm</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="col">ETANCHÉITÉ</th>
+                <td>{{ watch.waterproof }}m</td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th scope="col">VERRE</th>
+                <td>{{ watch.glass }}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="col">FONCTIONS</th>
+                <td>{{ watch.function }}</td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th scope="col">BOITIER</th>
+                <td>{{ watch.watchDial }}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="col">BRACELET</th>
+                <td>{{ watch.bracelet }}</td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th scope="col">FERMOIR</th>
+                <td>{{ watch.watchClasps }}</td>
+              </tr>
+            <tbody>
+              <tr>
+                <th scope="col">DISPONIBILITÉ</th>
+                <td>En Stock</td>
+              </tr>
+            </tbody>
+            </thead>
+          </table>
+          <!-- <hr class="low"> -->
+        </div>
+      </div>
+    </div>
+    <hr class="linebottom">
+  </div>
+
+
+  {% endblock %}
