@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Validation de commande
+{% endblock %}
+
+{% block body %}
+
+<div class="container my-5">
+
+
+
+    <div class="mb-2">
+        <h1>Récapitulatif de votre commande</h1>
+    </div>
+
+    <div class="alert alert-success">Félicitations, votre commande a été validée. Un mail de récapitulatif vous a été envoyé. Une fois votre carte
+        d'identité vérifiée, vous recevrez un mail de confirmation définitive de commande.</div>
+
+    <div>
+        <h3>Vos coordonées</h3>
+        <p>{{user.firstname}} {{user.lastname}}</p>
+        <p>{{user.email}}</p>
+        <p>{{user.phoneNumber}}</p>
+        <p>{{user.address}}</p>
+        <p>{{user.town}}</p>
+        <p>{{user.zipcode}}</p>
+        <p>{{user.country}}</p>
+    </div>
+
+    <div>
+        <h3>Votre commande</h3>
+        <p>Vous avez choisi : {{delivery.name}}</p>
+        {% for item in items %}
+        <div>
+            <p>{{item.product.brand}} {{item.product.model}}</p>
+            <p>Du {{ date(item.startsAt)|date('d/m/Y') }} au {{ date(item.endsAt)|date('d/m/Y') }}</p>
+        </div>
+        {% endfor %}
+        <p>Vous avez payé : {{total}} €</p>
+    </div>
+
+    <a class="btn btn-primary col-2" href="{{path('homepage')}}">Retour à l'accueil</a>
+
+    {% endblock %}

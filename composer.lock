@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ce5036168e4e5e2153836962f573019",
+    "content-hash": "f1ba8e4102f09d3996ffc58d56189705",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1534,12 +1534,6 @@
                 "laminas",
                 "zf"
             ],
-            "funding": [
-                {
-                    "url": "https://funding.communitybridge.org/projects/laminas-project",
-                    "type": "community_bridge"
-                }
-            ],
             "time": "2020-04-03T16:01:00+00:00"
         },
         {
@@ -2276,16 +2270,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v7.30.0",
+            "version": "v7.31.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "ea0586669c4fc82cd7a718526604b2c01cb40c77"
+                "reference": "993b58f73572b415c476548134e71e07d96ac3f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/ea0586669c4fc82cd7a718526604b2c01cb40c77",
-                "reference": "ea0586669c4fc82cd7a718526604b2c01cb40c77",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/993b58f73572b415c476548134e71e07d96ac3f0",
+                "reference": "993b58f73572b415c476548134e71e07d96ac3f0",
                 "shasum": ""
             },
             "require": {
@@ -2329,7 +2323,7 @@
                 "payment processing",
                 "stripe"
             ],
-            "time": "2020-04-29T19:45:07+00:00"
+            "time": "2020-05-01T19:45:41+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

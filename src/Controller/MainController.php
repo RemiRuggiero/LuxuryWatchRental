@@ -16,4 +16,16 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
+    /**
+     * @Route("/qui/sommes/nous", name="qui_sommes_nous")
+     */
+    public function whoAreWe()
+    {
+        return $this->render('main/whoAreWe.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
+
+
 }

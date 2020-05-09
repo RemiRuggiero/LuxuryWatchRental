@@ -39,7 +39,7 @@ class PrePayController extends AbstractController
         $user = $this->getUser();
         $form = $this->createForm( AdressType::class, $user, array(
            
-            'validation_groups' => ['Default'],            
+            'validation_groups' => ['Default', 'payment'],            
         ));
 
         $form->handleRequest( $request );

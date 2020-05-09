@@ -22,11 +22,11 @@ class WatchEntityRepository extends ServiceEntityRepository
     public function findByAvailable($id)
     {
         $stmt = $this->createQueryBuilder('w');
-        $stmt->where('w.id = :id')->andWhere('w.available IS NOT NULL');
+        $stmt->where('w.watch_model = :id')->andWhere('w.available = 1');
         $stmt->setParameter('id', $id);
         $stmt->setMaxResults(1);
-        if($stmt->getQuery()->getSingleResult()){
-            return $stmt->getQuery()->getSingleResult();
+        if($stmt->getQuery()->getOneOrNullResult() !==null){
+            return $stmt->getQuery()->getOneOrNullResult();
         }
         else{
             return 'not ok';

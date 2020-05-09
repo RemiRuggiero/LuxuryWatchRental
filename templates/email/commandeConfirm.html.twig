@@ -1,0 +1,45 @@
+<h1>Validation de commande</h1>
+    <p>Merci d'avoir commandé chez LuxuryWatchRental. Votre commande va être traitée dans les plus brefs délais.</p>
+
+<h2>Votre commande</h2>
+
+    <div class="table-responsive-md">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Marque</th>
+                    <th scope="col">Modèle</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Caution</th>
+                    <th scope="col">Début de location</th>
+                    <th scope="col">Fin de location</th>
+
+                    <th scope="col">Total</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+
+                <tr>
+                    <td>{{ item.product.brand }}</td>
+                    <td>{{ item.product.model }}</td>
+                    <td>{{ item.product.price }} €</td>
+                    <td>{{ item.product.deposit }} €</td>
+                    <td>{{ date(item.startsAt)|date('d/m/Y') }}</td>
+                    <td>{{ date(item.endsAt)|date('d/m/Y') }}</td>
+
+                    <td>{{ item.product.price * item.days }} €</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" class="text-right">Total : </td>
+                    <td>{{ total }} €</td>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+    

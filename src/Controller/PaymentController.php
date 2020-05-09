@@ -2,22 +2,25 @@
 
 namespace App\Controller;
 
+use DateTime;
+use Swift_Mailer;
+use Stripe\Stripe;
+use App\Form\PayType;
 use App\Entity\Delivery;
 use App\Entity\Location;
 use App\Form\AdressType;
 use App\Form\PaymentType;
-use App\Form\PayType;
-use App\Repository\DeliveryCompanyRepository;
-use App\Repository\WatchEntityRepository;
-use App\Repository\WatchModelRepository;
+use Stripe\PaymentIntent;
+use App\Service\MediaService;
 use App\Service\Cart\CartService;
+use App\Repository\WatchModelRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\WatchEntityRepository;
+use App\Repository\DeliveryCompanyRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Service\MediaService;
-use DateTime;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PaymentController extends AbstractController
 {
@@ -38,7 +41,7 @@ class PaymentController extends AbstractController
     /**
      * @Route("/payment/", name="payment")
      */
-    public function payment( Request $request ,EntityManagerInterface $em, SessionInterface $session)
+    public function payment( Request $request ,EntityManagerInterface $em, SessionInterface $session,  Swift_Mailer $mailer)
     {
         $amount = ($this->cartService->getTotal())*100;
         $delivery = new Delivery();
@@ -77,7 +80,6 @@ class PaymentController extends AbstractController
 
             //On boucle sur les entité de la montre
             foreach($session->get('panier') as $id => $watch){
-
                 $watchModel = $this->watchModelRepository->find(intval($id));
 
                 //Puis on boucle sur chaque date en session
@@ -123,7 +125,30 @@ class PaymentController extends AbstractController
                 }
             }
             $em->flush();
-            return $this->redirectToRoute('homepage');
+
+            //Send email
+            $message = (new \Swift_Message('Confirmation de commande'))
+                // On attribue l'expéditeur
+                ->setFrom('pierredechezlwr@gmail.com')
+                // On attribue le destinataire
+                ->setTo($user->getEmail())
+                // On crée le texte avec la vue
+                ->setBody(
+                    $this->renderView(
+                        'email/commandeConfirm.html.twig',
+                        array(
+                            'items' =>$this->cartService->getFullCart(),
+                            'total' =>$this->cartService->getTotal(),
+                        )
+                       
+                    ),
+                    'text/html'
+                )
+                ;
+                $mailer->send($message);
+
+                /* $session->clear('panier'); */
+            return $this->redirectToRoute('confirm_command', array('delivery'=>$deliveryId));
         }
       
         return $this->render('payment/index.html.twig', [

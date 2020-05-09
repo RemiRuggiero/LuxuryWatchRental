@@ -171,12 +171,13 @@ class User implements UserInterface, \Serializable
     private $enable;
 
     /**
-     *  @Assert\NotBlank( message = "Vous devez ajouter votre carte d'identité " )
+     *  @Assert\NotBlank( message = "Vous devez ajouter votre carte d'identité ",  groups={"payment"} )
       * @Assert\File(
       *     maxSize = "2M",
       *     maxSizeMessage = "Votre fichier est trop lourd, il ne doit pas dépasser {{ limit }}{{ suffix }}",
       *     mimeTypes = {"image/png", "image/jpeg" , "application/pdf"},
       *     mimeTypesMessage = "Seules les fichiers PNG, JPEG et PDF sont autorisées",
+      *     groups={"payment"}
       * )
      */
     private $cardFile;
