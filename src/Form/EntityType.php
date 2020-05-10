@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\WatchEntity;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,6 +14,7 @@ class EntityType extends AbstractType
     {
         $builder
             ->add('serial_number')
+            ->add('available', HiddenType::class, array('empty_data'=>true))
         ;
     }
 

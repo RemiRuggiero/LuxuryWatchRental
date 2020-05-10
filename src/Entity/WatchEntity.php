@@ -28,7 +28,8 @@ class WatchEntity
     private $watch_model;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default": true}
+ )
      */
     private $available;
 

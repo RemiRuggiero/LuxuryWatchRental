@@ -93,8 +93,8 @@ easy_admin:
                     - { property: deposit, label: 'Caution' }
                    
                     - { property: pictures, type: 'collection', type_options: { entry_type: App\Form\PicturesType, allow_delete: true } }
-                    - { property: watchEntities, label: 'Numéro de Série', type: 'collection', type_options: { entry_type: App\Form\EntityType, allow_delete: true } }
-             
+                    - { property: watchEntities, label: 'Numéro de Série', type: 'collection', type_options: { entry_type: App\Form\EntityType, allow_delete: true} }
+                    
         
         Numéro_de_série:
             class: App\Entity\WatchEntity
