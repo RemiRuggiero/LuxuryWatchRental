@@ -1,56 +1,58 @@
-p{
+p {
     font-family: "Raleway";
     font-weight: 400;
 }
 
 .account {
 
-    .titleadmin{
+    // title MES COORDONNEES
+    h2 {
+        font-size: 20pt;
+    }
+
+    // Compte USER
+    .titleUser {
         margin-top: 1em;
         color: rgb(192, 190, 190);
         font-size: 14pt;
-        font-weight: 400;        
+        font-weight: 400;
     }
 
-    .welcomeadmin{
+    // Compte ADMIN
+    .welcomeadmin {
         display: flex;
         display: inline-flex;
-    
-    .titleadmin{
-        margin-top: 1em;
-        color: rgb(192, 190, 190);
-        font-size: 14pt;
-        font-weight: 400;        
-    }
 
-    a{
-        text-decoration: none;
-                
-        :hover{
-            color: black;
+        .titleadmin {
+            margin-top: 1em;
+            color: rgb(192, 190, 190);
+            font-size: 14pt;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+
+            :hover {
+                color: black;
+            }
+        }
+
+        .admin {
+            font-size: 12pt;
+            margin-left: 0.5em;
+            margin-top: 0.5em;
+            color: rgb(192, 190, 190);
         }
     }
-    .admin{
-        font-size: 12pt;
-        margin-left: 0.5em;
-        margin-top: 0.5em;
-        color: rgb(192, 190, 190);   
-    }
-
-    }
-        
 }
 
+@media only screen and (max-width: 354px) {
+    .account {
 
- @media only screen and (max-width: 350px){
-    .account{
-        
-        .titleadmin{
-            font-size: 10pt;
-        }
-
-        h2{
-            font-size: 17pt;
+        // title MES COORDONNEES
+        h2 {
+            font-size: 16pt;
         }
     }
-} 
+}

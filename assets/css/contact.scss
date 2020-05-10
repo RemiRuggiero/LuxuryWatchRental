@@ -1,36 +1,41 @@
-#contactForm{
+#contactForm {
 
     font-family: 'Raleway';
 
-        // CONTACTEZ-NOUS
-        h1{
+    // CONTACTEZ-NOUS
+    h1 {
         font-weight: 400;
         text-align: center;
         margin-top: 2em;
     }
-        // texte information
-        .infosupp{
-            text-align: center;
-            margin-top: 1em;
-            margin-bottom: 2em;
-        }
 
-        // Bouton
-        button{
-            margin-bottom: 3em;
-        }
+    // texte information
+    .infosupp {
+        text-align: center;
+        margin-top: 1em;
+        margin-bottom: 2em;
+    }
+
+    // Bouton
+    button {
+        margin-bottom: 3em;
+    }
 }
 
 // Gestion du Responsive
-@media only screen and ( max-width: 367px){
+@media only screen and (max-width: 367px) {
 
     // CONTACTEZ-NOUS
-    h1{
-        font-size: 19pt;
+    h1 {
+        font-size: 16pt;
+    }
+
+    p {
+        font-size: 8pt;
     }
 
     // texte information
-    .infosupp{
+    .infosupp {
         font-size: 9pt;
     }
 }
