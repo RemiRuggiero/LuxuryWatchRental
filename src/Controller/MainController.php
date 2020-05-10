@@ -22,7 +22,7 @@ class MainController extends AbstractController
      */
     public function whoAreWe()
     {
-        return $this->render('main/whoAreWe.html.twig', [
+        return $this->render('main/faq.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }

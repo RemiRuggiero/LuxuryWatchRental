@@ -5,118 +5,221 @@
 {% block body %}
 
 <div class="account container">
-    <!-- Message de bienvenu ADMIN -->
+    <!-- Message de bienvenue ADMIN -->
     {% if is_granted('ROLE_ADMIN') %}
     <div class="welcomeadmin">
         <h1 class="titleadmin">Bienvenue {{ user.firstname }} </h1>
         <a href=" {{ path('easyadmin') }} "><i class="fas fa-users-cog admin"></i></a>
     </div>
 
-    <!-- Message de bienvenu CLIENT -->
+    <!-- Message de bienvenue CLIENT -->
     {% else %}
     <h1 class="titleUser">Bienvenue {{ user.firstname }} </h1>
     {% endif %}
 
-    <!-- Informations Personnelles -->
-    <h2>Mes coordonnées</h2>
-    <div>
-        <div class="form-group">
-            <label for="lastname">Nom</label>
-            <input name="lastname" type="text" class="form-control" id="lastname" value="{{ user.lastname }}"
-                disabled="disabled">
-        </div>
-        <div class="form-group">
-            <label for="firstname">Prénom</label>
-            <input name="firstname" type="text" class="form-control" id="firstname" value="{{ user.firstname }}"
-                disabled="disabled">
-        </div>
-        <div class="form-group">
-            <label for="birthday">Date de naissance</label>
-            <input name="birthday" type="date" class="form-control" id="birthday"
-                value="{{ date(user.birthday)|date('d/m/Y') }}" disabled="disabled">
-        </div>
-        <div class="form-group">
-            <label for="tel">Téléphone</label>
-            <input name="tel" class="form-control" id="tel"
-                value="{% if(user.phoneNumber)%} {{ user.phoneNumber }} {% else %} Vous n'avez pas renseigné de numéro {% endif %}"
-                disabled="disabled">
-        </div>
-        <div class="form-group">
-            <label for="adress">Adresse</label>
-            <input name="adress" class="form-control" id="adress"
-                value="{% if(user.address)%} {{ user.address }} {% else %} Vous n'avez pas renseigné d'adresse {% endif %}"
-                disabled="disabled">
-        </div>
-        <div class="form-group">
-            <label for="town">Ville</label>
-            <input name="town" class="form-control" id="town"
-                value="{% if(user.town)%} {{ user.town }} {% else %} Vous n'avez pas renseigné de ville {% endif %}"
-                disabled="disabled">
-        </div>
-        <div class="form-group">
-            <label for="zipcode">Code postal</label>
-            <input name="zipcode" class="form-control" id="zipcode"
-                value="{% if(user.zipcode)%} {{ user.zipcode }} {% else %} Vous n'avez pas renseigné de code postal {% endif %}"
-                disabled="disabled">
-        </div>
-        <div class="form-group">
-            <label for="country">Pays</label>
-            <input name="country" class="form-control" id="country"
-                value="{% if(user.country)%} {{ user.country }} {% else %} Vous n'avez pas renseigné de pays {% endif %}"
-                disabled="disabled">
-        </div>
-    </div>
-    <hr>
+    <!--Menu de la page account-->
 
-    <!-- Locations -->
-    <h2> Mes locations </h2>
-    {% for location in locations %}
-    {% set today = date() %}
-    {% if date( location.endsAt ) > today %}
-    {% set status = {class: "warning", text: "En cours"} %}
-    {% else %}
-    {% set status = {class: "danger", text: "Passé"} %}
-    {% endif %}
-    <h5>
-        Location numéro : {{ location.locationNumber }}
-        <div class="badge badge-pill badge-{{ status.class }}">
-            {{ status.text }}
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                aria-selected="true">Mes coordonnées</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                aria-selected="false">Mes locations</a>
+        </li>
+
+    </ul>
+
+    <!--Contenu des onglets-->
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <!-- Informations Personnelles -->
+            <h2 class="my-3">Mes coordonnées</h2>
+            <div>
+                <div class="form-group">
+                    <label for="lastname">Nom</label>
+                    <input name="lastname" type="text" class="form-control" id="lastname" value="{{ user.lastname }}"
+                        disabled="disabled">
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Prénom</label>
+                    <input name="firstname" type="text" class="form-control" id="firstname" value="{{ user.firstname }}"
+                        disabled="disabled">
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Date de naissance</label>
+                    <input name="birthday" type="date" class="form-control" id="birthday"
+                        value="{{ date(user.birthday)|date('d/m/Y') }}" disabled="disabled">
+                </div>
+                <div class="form-group">
+                    <label for="tel">Téléphone</label>
+                    <input name="tel" class="form-control" id="tel"
+                        value="{% if(user.phoneNumber)%} {{ user.phoneNumber }} {% else %} Vous n'avez pas renseigné de numéro {% endif %}"
+                        disabled="disabled">
+                </div>
+                <div class="form-group">
+                    <label for="adress">Adresse</label>
+                    <input name="adress" class="form-control" id="adress"
+                        value="{% if(user.address)%} {{ user.address }} {% else %} Vous n'avez pas renseigné d'adresse {% endif %}"
+                        disabled="disabled">
+                </div>
+                <div class="form-group">
+                    <label for="town">Ville</label>
+                    <input name="town" class="form-control" id="town"
+                        value="{% if(user.town)%} {{ user.town }} {% else %} Vous n'avez pas renseigné de ville {% endif %}"
+                        disabled="disabled">
+                </div>
+                <div class="form-group">
+                    <label for="zipcode">Code postal</label>
+                    <input name="zipcode" class="form-control" id="zipcode"
+                        value="{% if(user.zipcode)%} {{ user.zipcode }} {% else %} Vous n'avez pas renseigné de code postal {% endif %}"
+                        disabled="disabled">
+                </div>
+                <div class="form-group">
+                    <label for="country">Pays</label>
+                    <input name="country" class="form-control" id="country"
+                        value="{% if(user.country)%} {{ user.country }} {% else %} Vous n'avez pas renseigné de pays {% endif %}"
+                        disabled="disabled">
+                </div>
+            </div>
         </div>
-    </h5>
-    {% set today = date("+5 days") %}
-    {% if date( location.endsAt ) <= today %}
-    <div class="alert alert-warning" role="alert">
-        Votre location <b> {{ location.locationNumber }} </b> est bientôt terminée ! Pensez à télécharger le bordereau
-        d'envoi <a href="{{ asset( 'build/images/shipping.pdf') }}">ici</a> et à nous deposer votre montre dans un point
-        relais le <b>{{ date( location.endsAt )|date('d/m/Y') }} </b>
+
+            <!--Locations-->
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+            <!--Sous menu locations-->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#locations" role="tab"
+                        aria-controls="locations" aria-selected="true">Locations en cours</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#formerloc" role="tab"
+                        aria-controls="formerloc" aria-selected="false">Locations passées</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="locations" role="tabpanel" aria-labelledby="home-tab">
+                    <!-- Locations en cours -->
+                    <h2 class="my-3"> Mes locations en cours </h2>
+                    {% for location in locations %}
+                    {% set today = date() %}
+                    {% if date( location.endsAt ) > today %}
+                    {% set status = {class: "warning", text: "En cours"} %}
+
+                    <h5>
+                        Location numéro : {{ location.locationNumber }}
+                        <div class="badge badge-pill badge-{{ status.class }}">
+                            {{ status.text }}
+                        </div>
+                    </h5>
+                    {% set today = date("+5 days") %}
+                    {% if date( location.endsAt ) <= today %}
+                    <div class="alert alert-warning" role="alert">
+                        Votre location <b> {{ location.locationNumber }} </b> est bientôt terminée ! Pensez à
+                        télécharger le
+                        bordereau
+                        d'envoi <a href="{{ asset( 'build/images/shipping.pdf') }}">ici</a> et à nous deposer votre
+                        montre dans
+                        un point
+                        relais le <b>{{ date( location.endsAt )|date('d/m/Y') }} </b>
+                    </div>
+                    {% endif %}
+                    <ul>
+                        <li>
+                            Date de debut de location : {{ date( location.startsAt )|date('d/m/Y H:i') }}
+                        </li>
+                        <li>
+                            Date de fin de location : {{ date(location.endsAt)|date('d/m/Y H:i') }}
+                        </li>
+                        <li>
+                            Prix total : {{ location.amount }} €
+                        </li>
+                    </ul>
+                    <h5>Votre montre : </h5>
+                    <ul>
+                        <li>
+                            {{ location.watchEntity.watchModel.brand }}
+                        </li>
+                        <li>
+                            {{ location.watchEntity.watchModel }}
+                        </li>
+                        <li>
+                            Numéro de série : {{ location.watchEntity }}
+                        </li>
+                    </ul>
+                    <p> Vous souhaitez procéder au retour ? <a href="{{ asset( 'build/images/shipping.pdf') }}"
+                            target="_blank">
+                            <b>
+                                Cliquez ici ! </b> </a></p>
+                    <hr>
+
+                    {% endif %}
+                    {% endfor %}
+                   
+
+
+
+                </div>
+                <div class="tab-pane fade" id="formerloc" role="tabpanel" aria-labelledby="profile-tab">
+                    <!-- Locations passées -->
+                    <h2 class="my-3"> Mes locations passées </h2>
+                    {% for location in locations %}
+                    {% set today = date() %}
+                    {% if date( location.endsAt ) < today %}
+                   
+                    
+                    <h5>
+                        Location numéro : {{ location.locationNumber }}
+                    </h5>
+                    {% set today = date("+5 days") %}
+                    {% if date( location.endsAt ) <= today %}
+                    <div class="alert alert-warning" role="alert">
+                        Votre location <b> {{ location.locationNumber }} </b> est bientôt terminée ! Pensez à
+                        télécharger le
+                        bordereau
+                        d'envoi <a href="{{ asset( 'build/images/shipping.pdf') }}">ici</a> et à nous deposer votre
+                        montre dans
+                        un point
+                        relais le <b>{{ date( location.endsAt )|date('d/m/Y') }} </b>
+                    </div>
+                    {% endif %}
+                    <ul>
+                        <li>
+                            Date de debut de location : {{ date( location.startsAt )|date('d/m/Y H:i') }}
+                        </li>
+                        <li>
+                            Date de fin de location : {{ date(location.endsAt)|date('d/m/Y H:i') }}
+                        </li>
+                        <li>
+                            Prix total : {{ location.amount }} €
+                        </li>
+                    </ul>
+                    <h5>Votre montre : </h5>
+                    <ul>
+                        <li>
+                            {{ location.watchEntity.watchModel.brand }}
+                        </li>
+                        <li>
+                            {{ location.watchEntity.watchModel }}
+                        </li>
+                        <li>
+                            Numéro de série : {{ location.watchEntity }}
+                        </li>
+                    </ul>
+                    <p> Vous souhaitez procéder au retour ? <a href="{{ asset( 'build/images/shipping.pdf') }}"
+                            target="_blank">
+                            <b>
+                                Cliquez ici ! </b> </a></p>
+                    <hr>
+
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
     </div>
-    {% endif %}
-    <ul>
-        <li>
-            Date de debut de location : {{ date( location.startsAt )|date('d/m/Y H:i') }}
-        </li>
-        <li>
-            Date de fin de location : {{ date(location.endsAt)|date('d/m/Y H:i') }}
-        </li>
-        <li>
-            Prix total : {{ location.amount }} €
-        </li>
-    </ul>
-    <h5>Votre montre : </h5>
-    <ul>
-        <li>
-            {{ location.watchEntity.watchModel.brand }}
-        </li>
-        <li>
-            {{ location.watchEntity.watchModel }}
-        </li>
-        <li>
-            Numéro de série : {{ location.watchEntity }}
-        </li>
-    </ul>
-    <p> Vous souhaitez procéder au retour ? <a href="{{ asset( 'build/images/shipping.pdf') }}" target="_blank"> <b>
-                Cliquez ici ! </b> </a></p>
-    <hr>
-    {% endfor %}
+    </div>
 </div>
+
 {% endblock %}
