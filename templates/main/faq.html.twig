@@ -1,0 +1,185 @@
+{% extends "base.html.twig" %}
+
+{% block title %}FAQ - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+<div class="container my-5">
+
+    <div class="mb-3">
+        <h1>FAQ</h1>
+    </div>
+    
+
+    <div class="accordion" id="accordionExample">
+
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed onglets" type="button" data-toggle="collapse" data-target="#collapseOne"
+                        aria-expanded="false" aria-controls="collapseOne">
+                        Qui sommes-nous ?
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    Luxury Watch Rental est une enseigne proposant un service de location de montres de luxe. Nos
+                    clients ont la possibilité de louer plusieurs montres d’exception et ont à leur disposition une
+                    large collection réunissant les horlogers les plus connus du marché.
+                    Acheter une montre de luxe n'est pas donné à tout le monde. Dans une société où la location est
+                    devenue chose courante, louer des objets de luxe est une nouvelle façon de se faire plaisir. Luxury
+                    Watch Rental vous propose de louer vos montres de luxe préférées et de les porter lors d'évènements
+                    comme un mariage, une soirée chic, un séminaire ou autre réunion d'affaire.
+                    Plus qu'un service de location de montres, Luxury Watch Rental est une vraie immersion dans le monde
+                    de l'horlogerie de luxe.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link onglets" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                        aria-expanded="false" aria-controls="collapseTwo">
+                        Livraison
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    Nous nous engageons a vous livrer votre montre le jour du debut de votre location. 
+                    Vous avez le choix entre une livraison a domicile ou un retrait dans une bijouterie proche de chez vous. 
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                    <button class="btn btn-link onglets" type="button" data-toggle="collapse" data-target="#collapseThree"
+                        aria-expanded="false" aria-controls="collapseThree">
+                        Retour
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                    Preparez votre retour en toute sérénités en allant dans la rubrique mes locations dans la page mon compte, imprimez l’étiquette de retour puis deposez la dans un point de retrait UPS ou dans une bijouterie proche de chez vous parmis nos bijouterie partenaire.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h2 class="mb-0">
+                    <button class="btn btn-link onglets" type="button" data-toggle="collapse" data-target="#collapseFour"
+                        aria-expanded="false" aria-controls="collapseFour">
+                        J'ai cassé ma montre, que faire ?
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                <div class="card-body">
+                    Si vous avez endommagé votre montre ou si vous l'avez légèrement abîmée nous vous contacterons une fois la montre examinée par nos experts et vous indiquerons le montant de frais à régler.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingFive">
+                <h2 class="mb-0">
+                    <button class="btn btn-link onglets" type="button" data-toggle="collapse" data-target="#collapseFive"
+                        aria-expanded="false" aria-controls="collapseFive">
+                        J'ai perdu ma montre, que faire ?
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                <div class="card-body">
+                    Si vous avez perdu votre montre veuillez contacter notre service client afin de procéder au paiement du montant de la caution de votre montre.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingSix">
+                <h2 class="mb-0">
+                    <button class="btn btn-link onglets" type="button" data-toggle="collapse" data-target="#collapseSix"
+                        aria-expanded="false" aria-controls="collapseSix">
+                        Je me suis fait voler ma montre, que faire ?
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                <div class="card-body">
+                    Si vous avez perdu votre montre veuillez contacter notre service client afin de procéder au paiement du montant de la caution de votre montre.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingSeven">
+                <h2 class="mb-0">
+                    <button class="btn btn-link onglets" type="button" data-toggle="collapse" data-target="#collapseSeven"
+                        aria-expanded="false" aria-controls="collapseSeven">
+                        Engagements
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+                <div class="card-body">
+                    En louant votre montre chez LWR vous vous engagez a payer au maximum le montant de la caution de votre montre en cas de dégradations, perte ou vol. En cas de non paiement des frais indiqués vous vous exposez à une attaque en justice.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingEight">
+                <h2 class="mb-0">
+                    <button class="btn btn-link onglets" type="button" data-toggle="collapse" data-target="#collapseEight"
+                        aria-expanded="false" aria-controls="collapseEight">
+                        J'ai renvoyé ma montre en retard, que se passera t-il ?
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+                <div class="card-body">
+                    En cas de retour tardif, il vous sera demandé de payer deux fois le montant d’un jour de location par jour de retard.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingNine">
+                <h2 class="mb-0">
+                    <button class="btn btn-link onglets" type="button" data-toggle="collapse" data-target="#collapseNine"
+                        aria-expanded="false" aria-controls="collapseNine">
+                        Je n'ai pas reçu ma montre a temps, que faire ?
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
+                <div class="card-body">
+                    Pas de panique, si votre colis ne vous a pas été remis le jour du début se votre location, il vous sera proposé d’allonger votre location moyennant le nombres de jours de retard ( si disponibilités ) ou de vous rembourser le nombre de jours de retard selon votre choix.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="my-4">
+        <p>Pour toute autre question, veuillez nous contacter à l'aide du formulaire de contact.</p>
+    </div>
+   
+</div>
+{% endblock %}

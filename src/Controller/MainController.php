@@ -18,11 +18,11 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/qui/sommes/nous", name="qui_sommes_nous")
+     * @Route("/faq", name="faq")
      */
-    public function whoAreWe()
+    public function faq()
     {
-        return $this->render('main/whoAreWe.html.twig', [
+        return $this->render('main/faq.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }
