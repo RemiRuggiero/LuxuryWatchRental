@@ -1,18 +1,7 @@
-{% extends 'base.html.twig' %}
+<h1>Validation de commande</h1>
+    <p>Merci d'avoir commandé chez LuxuryWatchRental. Votre commande va être traitée dans les plus brefs délais.</p>
 
-{% block title %}Hello CartController!
-{% endblock %}
-
-{% block body %}
-
-<div class="cart">
-
-
-    <div class="mb-2">
-        <h1>Votre panier</h1>
-    </div>
-
-    {% if items | length > 0 %}
+<h2>Votre commande</h2>
 
     <div class="table-responsive-md">
         <table class="table">
@@ -30,7 +19,6 @@
                 </tr>
             </thead>
             <tbody>
-                {#{{ dump(items)}}#}
                 {% for item in items %}
 
                 <tr>
@@ -42,12 +30,6 @@
                     <td>{{ date(item.endsAt)|date('d/m/Y') }}</td>
 
                     <td>{{ item.product.price * item.days }} €</td>
-                    <td>
-                        <a href="{{ path('cart_remove', {'id': item.product.id, 'key': item.key}) }}"
-                            class="btn btn-danger btn-sm">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -60,35 +42,4 @@
         </table>
 
     </div>
-
-    <form method="GET"
-    {% if app.user is empty %}
-        action="{{ path('user_login') }}"
-        {% else %}
-        action="{{ path('pre_pay') }}"
-        {% endif %} 
-    class="delivery">
-        <p>Choix de la livraison</p>
-        {% for delivery in companies %}
-        <div class="form-check form-control mb-2 col-6">
-            <input class="form-check-input" type="radio" name="delivery" value="{{delivery.id}}">
-            <label class="form-check-label" for="delivery">
-                {{delivery.name}}
-            </label>
-        </div>
-        {% endfor %}
-        <button type="submit" class="btn btn-success mt-3">Valider</button>
-    </form>
-
-    {% else %}
-    <p>Votre panier est vide !</p>
-
-    {% endif %}
-
-
-
-</div>
-
-
-
-{% endblock %}
+    

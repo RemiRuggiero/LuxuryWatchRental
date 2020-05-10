@@ -28,10 +28,6 @@ class CartController extends AbstractController
     {
          
         //$session->clear();
-        var_dump($session->get('a'));
-        echo '<pre>' ;
-        var_dump($session->get('panier'));
-        echo '</pre>' ;
     
         return $this->render('cart/cart.html.twig', [
             'items' => $cartService->getFullCart(),

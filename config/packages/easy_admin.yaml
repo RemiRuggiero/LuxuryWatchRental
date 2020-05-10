@@ -5,6 +5,7 @@ easy_admin:
            
             - { entity: Utilisateurs, icon: "users" }
             - { entity: Montres, icon: "clock" }
+            - { entity: Numéro_de_série, icon: "tags" }
             - { entity: Location, icon: "tags" }
             - { entity: Transporteurs, icon: "truck" }
             - { entity: Livraison, icon: "dolly" }
@@ -90,9 +91,27 @@ easy_admin:
                     - Bracelet
                     - { property: watch_dial, label: 'Cadran' }
                     - { property: deposit, label: 'Caution' }
+                   
                     - { property: pictures, type: 'collection', type_options: { entry_type: App\Form\PicturesType, allow_delete: true } }
                     - { property: watchEntities, label: 'Numéro de Série', type: 'collection', type_options: { entry_type: App\Form\EntityType, allow_delete: true } }
-                    
+             
+        
+        Numéro_de_série:
+            class: App\Entity\WatchEntity
+            # disabled_actions: ['new']
+            list:
+                actions:
+                    - { name: 'edit', icon: 'edit', label: false, css_class: 'btn-secondary text-dark' }
+                    - { name: 'delete', icon: 'trash', label: false, css_class: 'btn-secondary text-danger' }
+                fields:
+                    - { property: serial_number, label: 'Numéro de Série' }
+                    - { property: watch_model, label: 'Modèle de montre' }
+                    - { property: available, label: 'Status', type: 'toggle' }
+            form:
+                fields:
+                    - { property: available, label: 'Status', type: 'toggle' }           
+
+
         Location:
             class: App\Entity\Location
             # disabled_actions: ['new']
@@ -110,10 +129,10 @@ easy_admin:
                     - { property: amount, label: 'Prix Total' }
                     - { property: is_paid, label: 'Status', type: 'toggle' }
                     - { property: bill_number, label: 'Numéro de Facture' }
-            #form:
-                #fields:
-                    #- { property: watch_entity, label: 'Numéro de Série' }
-                    #- { property: is_paid, label: 'Status' }
+            form:
+                fields:
+                    - { property: watch_entity, label: 'Numéro de Série' }
+                    - { property: is_paid, label: 'Status' }
 
         Transporteurs:
             class: App\Entity\DeliveryCompany

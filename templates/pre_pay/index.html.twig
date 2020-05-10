@@ -7,6 +7,7 @@
         'attr': {
             'class': 'container-fluid my-2',
             'novalidate': 'novalidate',
+
         }
     } ) }}
 
@@ -16,7 +17,8 @@
         
         <div class="col-lg-6">
             <h1>Informations de livraison</h1>
-            
+            {{dump(delivery)}}
+         
             {{ form_row( form.gender ) }}
             {{ form_row( form.lastname ) }}
             {{ form_row( form.firstname ) }}

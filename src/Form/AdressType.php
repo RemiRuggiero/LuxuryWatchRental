@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -60,6 +61,9 @@ class AdressType extends AbstractType
             ->add('cardFile', FileType::class, array(
                 'label' => 'Carte national d\'identité',
                 'help' => 'Veuillez reunir le recto et le verso sur le même scan',
+            ))
+            ->add('delivery', HiddenType::class, array(
+                'mapped' => false,
             ))
             
         ;

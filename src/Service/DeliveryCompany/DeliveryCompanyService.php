@@ -18,10 +18,13 @@ class DeliveryCompanyService
         $this->deliveryCompanyRepository = $deliveryCompanyRepository;
     }
     
-
     public function getDeliveryCompany()
     {
-        
         return $this->deliveryCompanyRepository->findAll();
+    }
+
+    public function getOneDeliveryCompany($id)
+    {
+        return $this->deliveryCompanyRepository->find($id);
     }
 }

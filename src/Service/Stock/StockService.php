@@ -70,8 +70,7 @@ class StockService
         if($nbOfRent == $initialStock)
         {
             return $dateTime;
-        } 
-         
+        }
                 
         //Recuperer les locations grace a l'id des watch Entities
         //Regarder si le DateTime est compris entre le start et end de chaque locations

@@ -16,7 +16,7 @@
     
         <div class="row my-2">
             <div class="col-lg-6">
-               
+               {{dump(id)}}
                 <h1>Paiement</h1>
                 <div class="form-group">
                     <label for="name">Nom et prénom du titulaire de la carte</label>
@@ -114,7 +114,7 @@
                 // execution. Set up a webhook or plugin to listen for the
                 // payment_intent.succeeded event that handles any business critical
                 // post-payment actions.
-                //form.submit();
+                form.submit();
             }
             }
         });
