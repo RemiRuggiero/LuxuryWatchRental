@@ -22,7 +22,7 @@
         <li class="list-group-item recap"> CAUTION : {{ item.product.deposit }} €</li>
         <li class="list-group-item"> DÉBUT DE LOCATION : {{ date(item.startsAt)|date('d/m/Y') }}</li>
         <li class="list-group-item recap"> FIN DE LOCATION : {{ date(item.endsAt)|date('d/m/Y') }}</li>
-        <li class="list-group-item"> TOTAL : {{ item.product.price * item.days }} €</li>
+        <li class="list-group-item"> PRIX DE LA LOCATION : {{ item.product.price * item.days }} €</li>
         <!-- Bouton de suppression -->
         <td>
             <a href="{{ path('cart_remove', {'id': item.product.id, 'key': item.key}) }}" class="btn btn-danger btn-sm"
@@ -34,7 +34,12 @@
     {% endfor %}
 
     <!-- Choix de livraison -->
-    <form method="POST">
+    <form method="GET" class="formvalidate"
+        {% if app.user is empty %}
+        action="{{ path('user_login') }}"
+        {% else %}
+        action="{{ path('pre_pay') }}"
+        {% endif %} >
         <p class="deliverychoice">Choix de la livraison</p>
         {% for delivery in companies %}
         <div class="form-check form-control mb-2 col-7" id="deliverycompanychoice">
@@ -46,14 +51,13 @@
         {% endfor %}
 
         <!-- Prix total -->
-        <tr>
+        <tr class="totalpayment" >
             <td colspan="6" class="total">TOTAL : </td>
             <td>{{ total }} €</td>
         </tr>
 
         <!-- Bouton Validation de commande -->
-        <a {% if app.user is empty %} href="{{ path('user_login') }}" {% else %} href="{{ path('pre_pay') }}"
-            {% endif %} class="btn btn-success mt-2 mb-5" id="validate">Valider</a>
+        <button type="submit" class="btn btn-success mt-2 mb-5" id="validate">VALIDER</button>
     </form>
 
     <!-- Affichage si le panier est vide -->
