@@ -24,6 +24,11 @@
     margin: 0.5em;
 }
 
+.formvalidate{
+    display: grid;
+    font-size: 14pt;
+}
+
 // Btn Radio Delivery Company
 #deliverycompanychoice{
     margin: auto;
@@ -32,8 +37,12 @@
     border: 1px solid #eceeef;
 }
 
+.total{
+    font-size: 16pt;
+}
 // Btn "Validation"
 #validate{
     width: fit-content;
-    font-size: 10pt;
+    margin: auto;
+    font-size: 12pt;
 }

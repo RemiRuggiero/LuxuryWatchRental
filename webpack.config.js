@@ -9,6 +9,8 @@ Encore
     .setPublicPath('/build')
 
     .addEntry('app', './assets/js/app.js')
+    .addEntry('stripe', './assets/js/stripe.js')
+    .addEntry('onewatch', './assets/js/onewatch.js')
 
     .splitEntryChunks()
     .cleanupOutputBeforeBuild()
