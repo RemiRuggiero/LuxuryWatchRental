@@ -85,7 +85,7 @@
             </div>
         </div>
 
-            <!--Locations-->
+        <!--Locations-->
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
             <!--Sous menu locations-->
@@ -157,7 +157,7 @@
 
                     {% endif %}
                     {% endfor %}
-                   
+
 
 
 
@@ -168,8 +168,8 @@
                     {% for location in locations %}
                     {% set today = date() %}
                     {% if date( location.endsAt ) < today %}
-                   
-                    
+
+
                     <h5>
                         Location numéro : {{ location.locationNumber }}
                     </h5>
@@ -218,7 +218,7 @@
                     {% endfor %}
                 </div>
             </div>
-    </div>
+        </div>
     </div>
 </div>
 
