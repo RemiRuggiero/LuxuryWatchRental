@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Montre - {{ parent() }}{% endblock %}
+{% block title %}Montre - {{ parent() }}{% endblock %}
 
 {% block body %}
 <div class="container">
@@ -8,7 +8,7 @@
   <!-- Nom & Modèle de la montre -->
   <h1 class="h1-show">{{ watch.brand }}</h1>
   <hr>
-  <h2>{{ watch.model }}</h2>
+  <h2 class="titlewatch">{{ watch.model }}</h2>
 
   <!-- Carousel -->
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -49,18 +49,11 @@
   <!-- Calendrier, infos & Bouton "ajouter au panier" -->
   <p class="textresa">INDIQUER LA DURÉE DE RÉSERVATION SOUHAITÉE</p>
 
-  {#  {% for item in items %}
-        {% if item.stock == 0 %}
-        <p>pas de stock</p>
-      {% endif %}
-      {% else %} #}
   <input type="hidden" id="catchDate" name="catchDate" value="{{ jsonArray }}">
   <form name="dateform" action="{{ path('cart_add', {'id': watch.id}) }}" method="POST">
     <input id='daterange' type="dd/MMMM/y" name="daterange" value="01/01/2018 - 01/15/2018" />
     <button type="submit" name="ok" value="ok" class="btn-link validate">VALIDER</button>
   </form>
-
-  {# {% endfor %} #}
 
   <!-- Caractéristiques produit -->
   <p class="price">à partir de <b>{{ watch.price }}€</b> / jour</p>
@@ -93,7 +86,6 @@
       </div>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
         <div class="card-body2">
-          <!-- <p class="caract">CARACTÉRISTIQUES</p> -->
           <table class="table table-striped">
             <thead>
               <tr>
@@ -174,12 +166,9 @@
             </tbody>
             </thead>
           </table>
-          <!-- <hr class="low"> -->
         </div>
       </div>
     </div>
     <hr class="linebottom">
   </div>
-
-
   {% endblock %}

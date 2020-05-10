@@ -1,6 +1,7 @@
-div.container{
+div.container {
+
     // Brand
-    .h1-show{
+    .h1-show {
         font-family: 'Raleway';
         font-weight: 300;
         font-size: 18pt;
@@ -10,7 +11,7 @@ div.container{
     }
 
     // Watch Model
-    h2{
+    .titlewatch {
         font-family: 'Raleway';
         font-weight: 500;
         font-size: 20pt;
@@ -20,35 +21,36 @@ div.container{
 
     // Images
     .w-100 {
-    width: 100% !important;
-    height: auto;
-    margin-right: auto;
+        width: 100% !important;
+        height: auto;
+        margin-right: auto;
     }
 
     // Fleches carousel
-    .carousel-control-prev-icon, .carousel-control-next-icon {
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
         filter: invert(50%);
         background-size: 15px;
-    }    
+    }
 
     a {
         display: flex;
-        margin : auto;
-     }
+        margin: auto;
+    }
 
     // ligne de séparation dessus carousel
-    hr{
+    hr {
         margin-top: 0.1em;
         margin-bottom: 0.5em;
     }
 
     // ligne de séparation sous le carousel
-    hr.souscarousel{
+    hr.souscarousel {
         margin-top: 1em;
     }
 
     // indiquer la durée...
-    .textresa{
+    .textresa {
         font-family: 'Raleway';
         font-weight: 600;
         font-size: 9pt;
@@ -56,193 +58,191 @@ div.container{
     }
 
     // DateRangePicker
-    form{
+    form {
         font-family: 'Raleway';
         font-weight: 400;
         text-align: center;
 
         // input DateRange
-    input#daterange{
-        border-radius: 2em;
-        width: 211px;
-        padding: 0.3em;
-        padding-left: 1.5em;
-        border-style: none;
-        background-color: #eeeeee;
-    }
+        input#daterange {
+            border-radius: 2em;
+            width: 211px;
+            padding: 0.3em;
+            padding-left: 1.5em;
+            border-style: none;
+            background-color: #eeeeee;
+        }
 
         // btn VALIDER
-    .validate{
-        
-        border-radius: 1em;
-        width: 100px;
-        height: 27px;
-        background-color: black;
-        color: white;
-        border-style: none;
+        .validate {
+
+            border-radius: 1em;
+            width: 100px;
+            height: 27px;
+            background-color: black;
+            color: white;
+            border-style: none;
+        }
     }
-    }    
 
     // texte date de début et fin
-    .dateresa{
+    .dateresa {
         font-size: 9pt;
         font-weight: 600;
         margin-top: 0.7em;
     }
 
     // Infos prix
-    .price{
+    .price {
         font-size: 9pt;
         text-align: center;
         margin-top: 1.5em;
         margin-bottom: 1.5em;
-    }    
+    }
 
     // Bouton "louer Maintenant"
-    a.btn.btn-dark{
+    a.btn.btn-dark {
         font-family: 'Raleway';
         font-weight: 500;
         font-size: 9pt;
-        color: white!important;
+        color: white !important;
         display: table;
-        background-color:rgb(5, 5, 5);
-        padding:1em;  
+        background-color: rgb(5, 5, 5);
+        padding: 1em;
         padding-top: 0.5em;
         padding-bottom: 0.5em;
         margin-top: 0.2em;
-        margin-bottom: 1.5em; 
+        margin-bottom: 1.5em;
     }
 
     // Tableau des caractéristiques
-    .accordion{
+    .accordion {
 
-        .onglets{
+        .onglets {
             font-size: 18pt;
         }
 
-        .btn-link{
-            text-decoration: none;
-        }
-
-        .card-body{
+        // Gestion Boutons Description et Caractéristiques
+        h2.mb-0 {
             text-align: center;
         }
 
-        .card-header{
+        .btn-link {
+            text-decoration: none;
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .card-header {
             padding: 0em;
         }
 
-        .backgroundCaract{
+        // Background Title Description
+        .backgroundCaract {
             background-color: white;
         }
 
-        .caract{
-            font-family: 'Raleway';
-            font-weight: 600;
-            font-size: 12pt;
-            margin-bottom: 0em;
-        }
-
-        th{
+        // Titre des caractéristiques
+        th {
             font-family: 'Raleway';
             font-weight: 600;
             font-size: 9pt;
         }
 
-        td{
+        // Caractéristiques spécifiques à une montre
+        td {
             font-family: 'Raleway';
             font-weight: 400;
             font-size: 9pt;
         }
 
-        .low{
-            margin-top: 1em;
-            margin-bottom: 2em;
-        }
-
-        .linebottom{
+        // Ligne de fin du tableau Caractériques
+        .linebottom {
             margin-bottom: 1.5em;
             visibility: hidden;
         }
-}
+    }
 }
 
 // Gestion du Responsive
-@media only screen and ( min-width: 992px){
-    div.container{
+@media only screen and (min-width: 992px) {
+    div.container {
+
         // Brand
-        h1{
+        h1 {
             font-size: 23pt;
             margin-bottom: 0.5em;
         }
-    
+
         // Watch Model
-        h2{
+        .titlewatch {
             font-size: 25pt;
         }
-    
+
         // Images
         .w-100 {
-        width: 60% !important;
-        height: auto;
-        margin: auto
-    }
-    
+            width: 60% !important;
+            height: auto;
+            margin: auto
+        }
+
         // Fleches carousel
-        .carousel-control-prev-icon, .carousel-control-next-icon {
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
             filter: invert(50%);
             background-size: 20px;
         }
-        
+
         // favicons panier & favoris
-        .cardNav{
-        font-size: 9pt;
-        margin-bottom: 0.5em;        
+        .cardNav {
+            font-size: 9pt;
+            margin-bottom: 0.5em;
         }
 
         // indiquer la durée...
-        .textresa{
+        .textresa {
             font-size: 11pt;
         }
-    
+
         // texte date de début et fin
-        .dateresa{
+        .dateresa {
             font-size: 10pt;
         }
-    
+
         // Infos prix
-        .price{
+        .price {
             font-size: 12pt;
-        }    
-    
+        }
+
         // Bouton "louer Maintenant"
-        a.btn.btn-dark{
-            font-size: 12pt; 
+        a.btn.btn-dark {
+            font-size: 12pt;
         }
 
         // Tableau des caractéristiques
-        .caract{
+        .caract {
             font-size: 14pt;
         }
-    
-        th{
+
+        th {
             font-size: 10pt;
         }
-    
-        td{
+
+        td {
             font-size: 10pt;
         }
     }
 }
 
-@media only screen and ( max-width: 345px){ 
+@media only screen and (max-width: 345px) {
 
-    div.container{
-    
-            // btn VALIDER
-        .validate{
+    div.container {
+
+        // btn VALIDER
+        .validate {
             margin-top: 0.5em;
-        }}
+        }
     }
-       
-    
+}

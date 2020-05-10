@@ -9,6 +9,7 @@ import '../css/show.scss';
 import '../css/contact.scss';
 import '../css/cart.scss';
 import '../css/whoarewe.scss';
+import '../css/forgotten_password.scss';
 
 
 

@@ -1,35 +1,39 @@
-
-@media(min-width: 900px){
-
-    .cart{
-
-        margin: 5em 8em;
-    
-    
-        .delivery{
-            
-            margin: 3em;
-    
-            .form-check{
-                padding-left: 2em;
-            }
-        }
-    
-    
-        
-    }
-
-
+// "MON PANIER"
+.title{
+    margin-top: 2em;
 }
 
-@media(max-width:900px){
-    .cart{
-        margin: 1em;
+// Récapitulatif de la commande
+.recap{
+    background-color: #eceeef;
+}
 
-        .form-check{
-            padding-left: 2em;
-        }
-    }
+// Bouton de suppression
+#trashbox{
+    margin-right: 0;
+    width: fit-content;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
 
+// "Choix de la livraison"
+.deliverychoice{
+    text-align: center;
+    font-weight: 600;
+    margin-top: 1em;
+    margin: 0.5em;
+}
 
+// Btn Radio Delivery Company
+#deliverycompanychoice{
+    margin: auto;
+    border-radius: 20px;
+    background-color:  white;
+    border: 1px solid #eceeef;
+}
+
+// Btn "Validation"
+#validate{
+    width: fit-content;
+    font-size: 10pt;
 }

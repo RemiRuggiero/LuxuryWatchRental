@@ -1,48 +1,52 @@
-//
-//Gestion des cartes de montre
-//
+.maleWatch {
 
-.maleWatch{
+    // Titre
+    h1 {
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+    }
 
-h1{
-    margin-top: 1em;
-    margin-bottom: 0.5em;
+    // Marque de la montre ( Breitling, Rolex...)
+    h3 {
+        font-family: 'Raleway';
+        font-weight: 300;
+        font-size: 15pt;
+        margin-bottom: 0;
+    }
+
+    //Carte
+    .card.watch {
+        box-shadow: 1px 1px 10px rgba(161, 161, 161, 0.5);
+    }
+
+    // Image montre
+    a {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .card-img-top {
+        width: 100%;
+        background-clip: content-box;
+        padding: 0.5em;
+        height: 300px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    //bottom de la carte
+    .bottom,
+    .card-watch-info {
+        text-align: center;
+    }
 }
 
-h3{
-    font-family: 'Raleway';
-    font-weight: 300;
-    font-size: 15pt;
-    margin-bottom: 0;
-}
+// Gestion du Responsive
+@media only screen and (max-width: 575px) {
 
-//Carte
-.card.watch{
-    box-shadow: 1px 1px 10px rgba(161, 161, 161, 0.5);
-}
-
-
-// Image montre
-a{
-    display: inline-block;
-    width: 100%;
-}
-
-.card-img-top{
-    width: 100%;
-    background-clip: content-box;
-    padding: 0.5em;
-    height: 300px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-//bottom de la carte
-
-.bottom{
-    text-align: center;
-}
-
-
+    // Titre
+    h1{
+        font-size: 16pt;
+    }
 }
