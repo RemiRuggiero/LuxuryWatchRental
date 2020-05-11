@@ -11,7 +11,7 @@ easy_admin:
             - { entity: Livraison, icon: "dolly" }
 
         brand_color: 'black'
-    site_name: <img src="/build/images/BrandHorizontalBlack.png" height="35> ____Manager'
+    site_name: '<img src="/build/images/BrandHorizontalBlack.png" height="35"> ____Manager' 
     user:
         name_property_path: email # affichage en haut à droite de l'admin une fois la partie register faite
     entities:
@@ -90,15 +90,14 @@ easy_admin:
                     - { property: watch_clasps, label: 'Fermoir' }
                     - Bracelet
                     - { property: watch_dial, label: 'Cadran' }
-                    - { property: deposit, label: 'Caution' }
-                   
+                    - { property: deposit, label: 'Caution' }                   
                     - { property: pictures, type: 'collection', type_options: { entry_type: App\Form\PicturesType, allow_delete: true } }
                     - { property: watchEntities, label: 'Numéro de Série', type: 'collection', type_options: { entry_type: App\Form\EntityType, allow_delete: true} }
                     
         
         Numéro_de_série:
             class: App\Entity\WatchEntity
-            # disabled_actions: ['new']
+            disabled_actions: ['new']
             list:
                 actions:
                     - { name: 'edit', icon: 'edit', label: false, css_class: 'btn-secondary text-dark' }
@@ -114,7 +113,7 @@ easy_admin:
 
         Location:
             class: App\Entity\Location
-            # disabled_actions: ['new']
+            disabled_actions: ['new']
             list:
                 actions:
                     - { name: 'edit', icon: 'edit', label: false, css_class: 'btn-secondary text-dark' }
