@@ -2,7 +2,7 @@ easy_admin:
     design:
         menu:
             - { label: 'Accueil du site', icon: 'home',  route: 'homepage' }
-           
+
             - { entity: Utilisateurs, icon: "users" }
             - { entity: Montres, icon: "clock" }
             - { entity: Numéro_de_série, icon: "tags" }
@@ -11,7 +11,7 @@ easy_admin:
             - { entity: Livraison, icon: "dolly" }
 
         brand_color: 'black'
-    site_name: <img src="/build/images/BrandHorizontalBlack.png" height="35> ____Manager' 
+    site_name: <img src="/build/images/BrandHorizontalBlack.png" height="35> ____Manager'
     user:
         name_property_path: email # affichage en haut à droite de l'admin une fois la partie register faite
     entities:
