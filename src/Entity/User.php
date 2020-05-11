@@ -61,61 +61,66 @@ class User implements UserInterface, \Serializable
     private $gender;
 
     /**
-     * @Assert\NotBlank( message = "Vous devez saisir votre numéro de téléphone" )
+     * @Assert\NotBlank( message = "Vous devez saisir votre numéro de téléphone", groups={"payment"} )
      *@Assert\Length(
      *      min = 2,
      *      max = 45,
      *      minMessage = "Le numéro de téléphone doit comporter au minimum {{ limit }} caractères",
      *      maxMessage = "Le numéro de téléphone doit comporter au maximum {{ limit }} caractères",
+     *      groups={"payment"}
      * )
      * @ORM\Column(type="string", length=45, nullable=true)
+     * 
      */
     private $phone_number;
 
     /**
-     * @Assert\NotBlank( message = "Vous devez saisir votre adresse postale" )
+     * @Assert\NotBlank( message = "Vous devez saisir votre adresse postale", groups={"payment"} )
      * @Assert\Length(
      *      min = 2,
      *      max = 255,
      *      minMessage = "L'adresse doit comporter au minimum {{ limit }} caractères",
      *      maxMessage = "L'adresse doit comporter au maximum {{ limit }} caractères",
+     *      groups={"payment"}
      * )
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $address;
 
     /**
-     * @Assert\NotBlank( message = "Vous devez saisir votre ville" )
+     * @Assert\NotBlank( message = "Vous devez saisir votre ville", groups={"payment"} )
      * @Assert\Length(
      *      min = 2,
      *      max = 255,
      *      minMessage = "La ville doit comporter au minimum {{ limit }} caractères",
      *      maxMessage = "La ville nom doit comporter au maximum {{ limit }} caractères",
+     *      groups={"payment"}
      * )
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $town;
 
     /**
-     * @Assert\NotBlank( message = "Vous devez saisir votre code postal" )
+     * @Assert\NotBlank( message = "Vous devez saisir votre code postal", groups={"payment"} )
      * @Assert\Length(
      *      min = 2,
      *      max = 255,
      *      minMessage = "Le code postale doit comporter au minimum {{ limit }} caractères",
      *      maxMessage = "Le code postale doit comporter au maximum {{ limit }} caractères",
+     *      groups={"payment"}
      * )
      * @ORM\Column(type="string", length=45, nullable=true)
      */
     private $zipcode;
 
     /**
-     * @Assert\NotBlank( message = "Vous devez saisir votre pays" )
+     * @Assert\NotBlank( message = "Vous devez saisir votre pays", groups={"payment"} )
      * @ORM\Column(type="string", length=45, nullable=true)
      */
     private $country;
 
      /**
-     * @Assert\NotBlank( message = "Vous devez saisir une adresse e-mail" )
+     * @Assert\NotBlank( message = "Vous devez saisir une adresse e-mail")
      * @Assert\Email(
      *     message = "L'adresse e-mail n'est pas valide"
      * )
